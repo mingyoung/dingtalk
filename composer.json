@@ -1,0 +1,21 @@
+{
+    "name": "mingyoung/dingtalk",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mingyoung",
+            "email": "mingyoungcheung@gmail.com"
+        }
+    ],
+    "require": {
+        "pimple/pimple": "^3.2",
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/cache": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "EasyDingTalk\\": "src/"
+        }
+    }
+}

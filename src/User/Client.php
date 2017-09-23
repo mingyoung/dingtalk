@@ -11,7 +11,7 @@
 
 namespace EasyDingTalk\User;
 
-use EasyDingTalk\Kernel\Client as BaseClient;
+use EasyDingTalk\Kernel\BaseClient;
 
 class Client extends BaseClient
 {
@@ -35,6 +35,11 @@ class Client extends BaseClient
         return $this->http->json('user/update', $data);
     }
 
+    /**
+     * @param array|string $userId
+     *
+     * @return array
+     */
     public function delete($userId)
     {
         if (is_array($userId)) {
@@ -72,8 +77,13 @@ class Client extends BaseClient
         ]);
     }
 
-    public function count(bool $isActive = true)
+    public function count($params = ['onlyActive' => 0])
     {
-        return $this->httpGet('user/get_org_user_count', ['onlyActive' => (int) $isActive]);
+        return $this->httpGet('user/get_org_user_count', $params);
+    }
+
+    public function activeCount()
+    {
+        return $this->count(['onlyActive' => 1]);
     }
 }

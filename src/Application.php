@@ -11,14 +11,15 @@
 
 namespace EasyDingTalk;
 
-use EasyDingTalk\Kernel\Config;
 use Pimple\Container;
 
 /**
  * Class Application.
  *
- * @property \EasyDingTalk\Kernel\Credential $credential
+ * @property \EasyDingTalk\Auth\Client $auth
  * @property \EasyDingTalk\User\Client $user
+ * @property \EasyDingTalk\Kernel\Credential $credential
+ * @property \EasyDingTalk\Department\Client $department
  */
 class Application extends Container
 {
@@ -26,8 +27,10 @@ class Application extends Container
      * @var array
      */
     protected $providers = [
-        Kernel\ServiceProvider::class,
+        Auth\ServiceProvider::class,
         User\ServiceProvider::class,
+        Kernel\ServiceProvider::class,
+        Department\ServiceProvider::class,
     ];
 
     /**
@@ -35,12 +38,12 @@ class Application extends Container
      *
      * @param array $config
      */
-    public function __construct(array $config = [])
+    public function __construct(array $config)
     {
         parent::__construct();
 
         $this['config'] = function () use ($config) {
-            return new Config($config);
+            return new Kernel\Config($config);
         };
 
         $this->registerProviders();

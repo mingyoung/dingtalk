@@ -15,7 +15,7 @@ use EasyDingTalk\Application;
 use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\RequestInterface;
 
-class Client
+class BaseClient
 {
     use MakesHttpRequests;
 

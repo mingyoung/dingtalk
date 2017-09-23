@@ -8,5 +8,5 @@
 
 ## Installation
 ```bash
-composer require mingyoung/dingtalk:dev-master
+composer require mingyoung/dingtalk:dev-develop
 ```

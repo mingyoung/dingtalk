@@ -17,7 +17,9 @@ use Pimple\Container;
  * Class Application.
  *
  * @property \EasyDingTalk\Auth\Client $auth
+ * @property \EasyDingTalk\Chat\Client $chat
  * @property \EasyDingTalk\User\Client $user
+ * @property \EasyDingTalk\Message\Client $message
  * @property \EasyDingTalk\Kernel\Credential $credential
  * @property \EasyDingTalk\Department\Client $department
  */
@@ -28,8 +30,10 @@ class Application extends Container
      */
     protected $providers = [
         Auth\ServiceProvider::class,
+        Chat\ServiceProvider::class,
         User\ServiceProvider::class,
         Kernel\ServiceProvider::class,
+        Message\ServiceProvider::class,
         Department\ServiceProvider::class,
     ];
 

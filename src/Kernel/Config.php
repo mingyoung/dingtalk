@@ -13,6 +13,11 @@ namespace EasyDingTalk\Kernel;
 
 use ArrayAccess;
 
+/**
+ * Class Config.
+ *
+ * @author mingyoung <mingyoungcheung@gmail.com>
+ */
 class Config implements ArrayAccess
 {
     /**

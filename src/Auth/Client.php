@@ -13,6 +13,11 @@ namespace EasyDingTalk\Auth;
 
 use EasyDingTalk\Kernel\BaseClient;
 
+/**
+ * Class Client.
+ *
+ * @author mingyoung <mingyoungcheung@gmail.com>
+ */
 class Client extends BaseClient
 {
     /**

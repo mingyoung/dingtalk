@@ -11,6 +11,11 @@
 
 namespace EasyDingTalk\Kernel\Exceptions;
 
+/**
+ * Class ClientError.
+ *
+ * @author mingyoung <mingyoungcheung@gmail.com>
+ */
 class ClientError extends Exception
 {
 }

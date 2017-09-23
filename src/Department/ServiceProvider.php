@@ -14,6 +14,11 @@ namespace EasyDingTalk\Department;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
+/**
+ * Class ServiceProvider.
+ *
+ * @author mingyoung <mingyoungcheung@gmail.com>
+ */
 class ServiceProvider implements ServiceProviderInterface
 {
     public function register(Container $app)

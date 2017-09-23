@@ -13,6 +13,11 @@ namespace EasyDingTalk\Kernel\Exceptions;
 
 use Exception as BaseException;
 
+/**
+ * Class Exception.
+ *
+ * @author mingyoung <mingyoungcheung@gmail.com>
+ */
 class Exception extends BaseException
 {
 }

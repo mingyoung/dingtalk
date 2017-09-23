@@ -15,6 +15,11 @@ use EasyDingTalk\Application;
 use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\RequestInterface;
 
+/**
+ * Class BaseClient.
+ *
+ * @author mingyoung <mingyoungcheung@gmail.com>
+ */
 class BaseClient
 {
     use MakesHttpRequests;

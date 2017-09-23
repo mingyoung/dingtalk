@@ -14,6 +14,11 @@ namespace EasyDingTalk\Kernel;
 use EasyDingTalk\Application;
 use Psr\Http\Message\RequestInterface;
 
+/**
+ * Class Credential.
+ *
+ * @author mingyoung <mingyoungcheung@gmail.com>
+ */
 class Credential
 {
     use MakesHttpRequests;

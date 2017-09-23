@@ -11,6 +11,11 @@
 
 namespace EasyDingTalk\Kernel;
 
+/**
+ * Trait MakesHttpRequests.
+ *
+ * @author mingyoung <mingyoungcheung@gmail.com>
+ */
 trait MakesHttpRequests
 {
     /**

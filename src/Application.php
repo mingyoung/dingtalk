@@ -16,10 +16,18 @@ use Pimple\Container;
 /**
  * Class Application.
  *
+ * @author mingyoung <mingyoungcheung@gmail.com>
+ *
+ * @property \EasyDingTalk\Sns\Client $sns
  * @property \EasyDingTalk\Auth\Client $auth
  * @property \EasyDingTalk\Chat\Client $chat
  * @property \EasyDingTalk\User\Client $user
+ * @property \EasyDingTalk\Media\Client $media
+ * @property \EasyDingTalk\Space\Client $space
+ * @property \EasyDingTalk\Jssdk\Client $jssdk
+ * @property \EasyDingTalk\Checkin\Client $checkin
  * @property \EasyDingTalk\Message\Client $message
+ * @property \EasyDingTalk\Attendance\Client $attendance
  * @property \EasyDingTalk\Kernel\Credential $credential
  * @property \EasyDingTalk\Department\Client $department
  */
@@ -29,11 +37,17 @@ class Application extends Container
      * @var array
      */
     protected $providers = [
+        Sns\ServiceProvider::class,
         Auth\ServiceProvider::class,
         Chat\ServiceProvider::class,
         User\ServiceProvider::class,
+        Jssdk\ServiceProvider::class,
+        Media\ServiceProvider::class,
+        Space\ServiceProvider::class,
         Kernel\ServiceProvider::class,
+        Checkin\ServiceProvider::class,
         Message\ServiceProvider::class,
+        Attendance\ServiceProvider::class,
         Department\ServiceProvider::class,
     ];
 

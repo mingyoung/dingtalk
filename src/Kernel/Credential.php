@@ -73,8 +73,8 @@ class Credential
     protected function credentials(): array
     {
         return [
-            'corpid' => $this->app['config']['corp_id'],
-            'corpsecret' => $this->app['config']['secret'],
+            'corpid' => $this->app['config']->get('corp_id'),
+            'corpsecret' => $this->app['config']->get('corp_secret'),
         ];
     }
 
@@ -87,10 +87,10 @@ class Credential
     }
 
     /**
-     * @param RequestInterface $request
-     * @param array            $options
+     * @param \Psr\Http\Message\RequestInterface $request
+     * @param array                              $options
      *
-     * @return RequestInterface
+     * @return \Psr\Http\Message\RequestInterface
      */
     public function applyToRequest(RequestInterface $request, array $options = []): RequestInterface
     {

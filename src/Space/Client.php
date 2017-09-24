@@ -9,15 +9,15 @@
  * with this source code in the file LICENSE.
  */
 
-namespace EasyDingTalk\Kernel;
+namespace EasyDingTalk\Space;
 
-use Adbar\Dot;
+use EasyDingTalk\Kernel\BaseClient;
 
 /**
- * Class Config.
+ * Class Client.
  *
  * @author mingyoung <mingyoungcheung@gmail.com>
  */
-class Config extends Dot
+class Client extends BaseClient
 {
 }

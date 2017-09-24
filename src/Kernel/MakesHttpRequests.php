@@ -11,6 +11,8 @@
 
 namespace EasyDingTalk\Kernel;
 
+use GuzzleHttp\RequestOptions;
+
 /**
  * Trait MakesHttpRequests.
  *
@@ -34,11 +36,11 @@ trait MakesHttpRequests
      * @param string $uri
      * @param array  $query
      *
-     * @return array
+     * @return array|\GuzzleHttp\Psr7\Response
      */
     public function httpGet(string $uri, array $query = [])
     {
-        return $this->httpRequest('GET', $uri, compact('query'));
+        return $this->httpRequest('GET', $uri, [RequestOptions::QUERY => $query]);
     }
 
     /**
@@ -48,11 +50,40 @@ trait MakesHttpRequests
      * @param array  $json
      * @param array  $query
      *
-     * @return array
+     * @return array|\GuzzleHttp\Psr7\Response
      */
     public function httpPostJson(string $uri, array $json = [], array $query = [])
     {
-        return $this->httpRequest('POST', $uri, compact('json', 'query'));
+        return $this->httpRequest('POST', $uri, [
+            RequestOptions::QUERY => $query,
+            RequestOptions::JSON => $json,
+        ]);
+    }
+
+    /**
+     * Upload files.
+     *
+     * @param string $uri
+     * @param array  $files
+     * @param array  $query
+     *
+     * @return array|\GuzzleHttp\Psr7\Response
+     */
+    public function httpUpload(string $uri, array $files, array $query = [])
+    {
+        $multipart = [];
+
+        foreach ($files as $name => $path) {
+            $multipart[] = [
+                'name' => $name,
+                'contents' => fopen($path, 'r'),
+            ];
+        }
+
+        return $this->httpRequest('POST', $uri, [
+            RequestOptions::QUERY => $query,
+            RequestOptions::MULTIPART => $multipart,
+        ]);
     }
 
     /**

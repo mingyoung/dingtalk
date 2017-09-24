@@ -15,6 +15,7 @@ use GuzzleHttp\Client as GuzzleHttp;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use Symfony\Component\Cache\Simple\FilesystemCache;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ServiceProvider.
@@ -25,6 +26,10 @@ class ServiceProvider implements ServiceProviderInterface
 {
     public function register(Container $app)
     {
+        $app['request'] = function () {
+            return Request::createFromGlobals();
+        };
+
         $app['http_client'] = function () {
             return new GuzzleHttp([
                 'base_uri' => 'https://oapi.dingtalk.com/',

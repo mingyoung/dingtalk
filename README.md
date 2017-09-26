@@ -18,4 +18,4 @@ composer require mingyoung/dingtalk:dev-develop
 
 ## Documentation
 
-:construction: WIP
+[Wiki](https://github.com/mingyoung/dingtalk/wiki)

@@ -30,7 +30,7 @@ class Messenger
 
     public function message($message)
     {
-        if (is_string($message) || is_integer($message)) {
+        if (is_string($message) || is_int($message)) {
             $message = new Text($message);
         }
         $this->message = $message;

@@ -12,7 +12,6 @@
 namespace EasyDingTalk\Kernel;
 
 use EasyDingTalk\Application;
-use Psr\Http\Message\RequestInterface;
 
 /**
  * Class Credential.
@@ -49,7 +48,11 @@ class Credential
             return $value;
         }
 
-        $this->setToken($token = $this->httpGet('gettoken', $this->credentials())['access_token'], 7000);
+        $result = $this->request('GET', 'gettoken', [
+            'query' => $this->credentials(),
+        ]);
+
+        $this->setToken($token = $result['access_token'], 7000);
 
         return $token;
     }
@@ -84,19 +87,5 @@ class Credential
     protected function cacheKey(): string
     {
         return 'easydingtalk.access_token.'.md5(json_encode($this->credentials()));
-    }
-
-    /**
-     * @param \Psr\Http\Message\RequestInterface $request
-     * @param array                              $options
-     *
-     * @return \Psr\Http\Message\RequestInterface
-     */
-    public function applyToRequest(RequestInterface $request, array $options = []): RequestInterface
-    {
-        parse_str($request->getUri()->getQuery(), $query);
-        $query = http_build_query(array_merge(['access_token' => $this->token()], $query));
-
-        return $request->withUri($request->getUri()->withQuery($query));
     }
 }

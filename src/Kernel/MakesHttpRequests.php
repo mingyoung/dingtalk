@@ -11,8 +11,6 @@
 
 namespace EasyDingTalk\Kernel;
 
-use GuzzleHttp\RequestOptions;
-
 /**
  * Trait MakesHttpRequests.
  *
@@ -21,82 +19,9 @@ use GuzzleHttp\RequestOptions;
 trait MakesHttpRequests
 {
     /**
-     * @var array
-     */
-    protected $options = [];
-
-    /**
      * @var bool
      */
     protected $transform = true;
-
-    /**
-     * Make a get request.
-     *
-     * @param string $uri
-     * @param array  $query
-     *
-     * @return array|\GuzzleHttp\Psr7\Response
-     */
-    public function httpGet(string $uri, array $query = [])
-    {
-        return $this->httpRequest('GET', $uri, [RequestOptions::QUERY => $query]);
-    }
-
-    /**
-     * Make a post request.
-     *
-     * @param string $uri
-     * @param array  $json
-     * @param array  $query
-     *
-     * @return array|\GuzzleHttp\Psr7\Response
-     */
-    public function httpPostJson(string $uri, array $json = [], array $query = [])
-    {
-        return $this->httpRequest('POST', $uri, [
-            RequestOptions::QUERY => $query,
-            RequestOptions::JSON => $json,
-        ]);
-    }
-
-    /**
-     * Upload files.
-     *
-     * @param string $uri
-     * @param array  $files
-     * @param array  $query
-     *
-     * @return array|\GuzzleHttp\Psr7\Response
-     */
-    public function httpUpload(string $uri, array $files, array $query = [])
-    {
-        $multipart = [];
-
-        foreach ($files as $name => $path) {
-            $multipart[] = [
-                'name' => $name,
-                'contents' => fopen($path, 'r'),
-            ];
-        }
-
-        return $this->httpRequest('POST', $uri, [
-            RequestOptions::QUERY => $query,
-            RequestOptions::MULTIPART => $multipart,
-        ]);
-    }
-
-    /**
-     * @param array $options
-     *
-     * @return $this
-     */
-    protected function setRequestOptions(array $options)
-    {
-        $this->options = $options;
-
-        return $this;
-    }
 
     /**
      * @param string $method
@@ -105,9 +30,9 @@ trait MakesHttpRequests
      *
      * @return array|\GuzzleHttp\Psr7\Response
      */
-    public function httpRequest(string $method, string $uri, array $options = [])
+    public function request(string $method, string $uri, array $options = [])
     {
-        $response = $this->app['http_client']->request($method, $uri, $options + $this->options);
+        $response = $this->app['http_client']->request($method, $uri, $options);
 
         return $this->transform ? $this->transformResponse($response) : $response;
     }
@@ -135,6 +60,10 @@ trait MakesHttpRequests
 
         if (isset($result['errcode']) && $result['errcode'] !== 0) {
             throw new Exceptions\ClientError($result['errmsg'], $result['errcode']);
+        }
+
+        if (isset($result['error_response'])) {
+            throw new Exceptions\ClientError($result['error_response']['msg'], $result['error_response']['code']);
         }
 
         return $result;

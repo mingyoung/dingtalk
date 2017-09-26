@@ -21,6 +21,7 @@ use Pimple\Container;
  * @property \EasyDingTalk\Sns\Client $sns
  * @property \EasyDingTalk\Auth\Client $auth
  * @property \EasyDingTalk\Chat\Client $chat
+ * @property \EasyDingTalk\Role\Client $role
  * @property \EasyDingTalk\User\Client $user
  * @property \EasyDingTalk\Media\Client $media
  * @property \EasyDingTalk\Space\Client $space
@@ -40,6 +41,7 @@ class Application extends Container
         Sns\ServiceProvider::class,
         Auth\ServiceProvider::class,
         Chat\ServiceProvider::class,
+        Role\ServiceProvider::class,
         User\ServiceProvider::class,
         Jssdk\ServiceProvider::class,
         Media\ServiceProvider::class,

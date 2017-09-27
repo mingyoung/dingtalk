@@ -30,14 +30,28 @@ class Client extends BaseClient
         return $this->httpGet('user/get', ['userid' => $userId]);
     }
 
-    public function create(array $data)
+    /**
+     * Create a new user.
+     *
+     * @param array $params
+     *
+     * @return array
+     */
+    public function create(array $params)
     {
-        return $this->http->json('user/create', $data);
+        return $this->http->json('user/create', $params);
     }
 
-    public function update(array $data)
+    /**
+     * Update an exist user.
+     *
+     * @param array $params
+     *
+     * @return array
+     */
+    public function update(array $params)
     {
-        return $this->http->json('user/update', $data);
+        return $this->http->json('user/update', $params);
     }
 
     /**
@@ -54,41 +68,65 @@ class Client extends BaseClient
         return $this->httpGet('user/delete', $userId);
     }
 
-    public function simpleList(int $departmentId)
+    /**
+     * @param int   $departmentId
+     * @param array $params
+     *
+     * @return array
+     */
+    public function simpleList(int $departmentId, array $params = [])
     {
         return $this->httpGet('user/simplelist', [
             'department_id' => $departmentId,
-        ]);
+        ] + $params);
     }
 
-    public function list(int $departmentId, int $offset, int $size)
+    /**
+     * @param int   $departmentId
+     * @param int   $size
+     * @param int   $offset
+     * @param array $params
+     *
+     * @return array
+     */
+    public function list(int $departmentId, int $size, int $offset, array $params = [])
     {
         return $this->httpGet('user/list', [
             'department_id' => $departmentId,
             'offset' => $offset,
             'size' => $size,
-        ]);
+        ] + $params);
     }
 
+    /**
+     * @return array
+     */
     public function admin()
     {
         return $this->httpGet('user/get_admin');
     }
 
-    public function userId($unionId)
+    /**
+     * UnionId to userId.
+     *
+     * @param string $unionId
+     *
+     * @return array
+     */
+    public function toUserId(string $unionId)
     {
         return $this->httpGet('user/getUseridByUnionid', [
             'unionid' => $unionId,
         ]);
     }
 
-    public function count($params = ['onlyActive' => 0])
+    /**
+     * @param array $params
+     *
+     * @return array
+     */
+    public function count(array $params)
     {
         return $this->httpGet('user/get_org_user_count', $params);
-    }
-
-    public function activeCount()
-    {
-        return $this->count(['onlyActive' => 1]);
     }
 }

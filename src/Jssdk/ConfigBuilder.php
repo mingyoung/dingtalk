@@ -111,7 +111,7 @@ class ConfigBuilder
      *
      * @return $this
      */
-    public function ofAgentId(int $agentId)
+    public function ofAgent(int $agentId)
     {
         $this->agentId = $agentId;
 
@@ -123,7 +123,7 @@ class ConfigBuilder
      *
      * @return $this
      */
-    public function withType(int $type)
+    public function setType(int $type)
     {
         $this->type = $type;
 
@@ -135,7 +135,7 @@ class ConfigBuilder
      *
      * @return $this
      */
-    public function withTimestamp(int $timestamp)
+    public function setTimestamp(int $timestamp)
     {
         $this->timestamp = $timestamp;
 
@@ -147,7 +147,7 @@ class ConfigBuilder
      *
      * @return $this
      */
-    public function withNonce(string $nonce)
+    public function setNonce(string $nonce)
     {
         $this->nonce = $nonce;
 
@@ -176,13 +176,5 @@ class ConfigBuilder
     public function toJson(): string
     {
         return json_encode($this->toArray());
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->toJson();
     }
 }

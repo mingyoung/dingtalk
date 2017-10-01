@@ -18,13 +18,11 @@ use Pimple\Container;
  *
  * @author mingyoung <mingyoungcheung@gmail.com>
  *
- * @property \EasyDingTalk\Sns\Client $sns
  * @property \EasyDingTalk\Auth\Client $auth
  * @property \EasyDingTalk\Chat\Client $chat
  * @property \EasyDingTalk\Role\Client $role
  * @property \EasyDingTalk\User\Client $user
  * @property \EasyDingTalk\Media\Client $media
- * @property \EasyDingTalk\Space\Client $space
  * @property \EasyDingTalk\Jssdk\Client $jssdk
  * @property \EasyDingTalk\Checkin\Client $checkin
  * @property \EasyDingTalk\Message\Client $message
@@ -39,14 +37,12 @@ class Application extends Container
      * @var array
      */
     protected $providers = [
-        Sns\ServiceProvider::class,
         Auth\ServiceProvider::class,
         Chat\ServiceProvider::class,
         Role\ServiceProvider::class,
         User\ServiceProvider::class,
         Jssdk\ServiceProvider::class,
         Media\ServiceProvider::class,
-        Space\ServiceProvider::class,
         Kernel\ServiceProvider::class,
         Checkin\ServiceProvider::class,
         Message\ServiceProvider::class,

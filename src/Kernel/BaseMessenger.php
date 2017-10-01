@@ -9,48 +9,39 @@
  * with this source code in the file LICENSE.
  */
 
-namespace EasyDingTalk\Chat;
+namespace EasyDingTalk\Kernel;
 
 use EasyDingTalk\Kernel\Messages\Text;
 
 /**
- * Class Messenger.
+ * Class BaseMessenger.
  *
  * @author mingyoung <mingyoungcheung@gmail.com>
  */
-class Messenger
+abstract class BaseMessenger
 {
-    protected $client;
+    /**
+     * @var \EasyDingTalk\Kernel\Messages\Message
+     */
     protected $message;
 
-    public function __construct(Client $client)
-    {
-        $this->client = $client;
-    }
-
+    /**
+     * Message to send.
+     *
+     * @param int|string|\EasyDingTalk\Kernel\Messages\Message $message
+     *
+     * @return $this
+     */
     public function message($message)
     {
         if (is_string($message) || is_int($message)) {
             $message = new Text($message);
         }
+
         $this->message = $message;
 
         return $this;
     }
 
-    protected $chatId;
-
-    public function to(string $chatId)
-    {
-        $this->chatId = $chatId;
-
-        return $this;
-    }
-
-    public function send()
-    {
-        $data = ['chatid' => $this->chatId] + $this->message->transform();
-
-        return $this->client->send($data);
-    }
+    abstract public function send();
 }

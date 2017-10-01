@@ -87,7 +87,7 @@ class Client extends BaseClient
      *
      * @return array
      */
-    public function getParentByDepartmentId(int $id)
+    public function parent(int $id)
     {
         return $this->httpGet('department/list_parent_depts_by_dept', compact('id'));
     }
@@ -99,7 +99,7 @@ class Client extends BaseClient
      *
      * @return array
      */
-    public function getParentByUserId(string $userId)
+    public function userParent(string $userId)
     {
         return $this->httpGet('department/list_parent_depts', compact('userId'));
     }

@@ -39,6 +39,30 @@ abstract class Message
     }
 
     /**
+     * @param int|string|\EasyDingTalk\Kernel\Messages\Message $message
+     *
+     * @return \EasyDingTalk\Kernel\Messages\Message
+     */
+    public static function parse($message): Message
+    {
+        if (is_int($message) || is_string($message)) {
+            $message = new Text($message);
+        }
+
+        return $message;
+    }
+
+    public function type()
+    {
+        return $this->type;
+    }
+
+    public function body()
+    {
+        return $this->attributes;
+    }
+
+    /**
      * @return array
      */
     public function transform(): array

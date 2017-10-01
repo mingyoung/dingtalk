@@ -12,6 +12,7 @@
 namespace EasyDingTalk\Message;
 
 use EasyDingTalk\Kernel\BaseClient;
+use EasyDingTalk\Kernel\Messages\Message;
 
 /**
  * Class Client.
@@ -20,18 +21,76 @@ use EasyDingTalk\Kernel\BaseClient;
  */
 class Client extends BaseClient
 {
+    /**
+     * @var array
+     */
+    protected $data = [];
+
+    /**
+     * @param string $messageId
+     *
+     * @return array
+     */
     public function status(string $messageId)
     {
         return $this->httpPostJson('message/list_message_status', compact('messageId'));
     }
 
-    public function message($message): Messenger
+    /**
+     * @param array|null $data
+     *
+     * @return array
+     */
+    public function send(array $data = null)
     {
-        return (new Messenger($this))->message($message);
+        return $this->httpPostJson('message/send', $data ?? $this->data);
     }
 
-    public function send(array $data)
+    /**
+     * @param string|array $user
+     *
+     * @return $this
+     */
+    public function toUser($user)
     {
-        return $this->httpPostJson('message/send', $data);
+        $this->data['touser'] = implode('|', (array) $user);
+
+        return $this;
+    }
+
+    /**
+     * @param string|array $party
+     *
+     * @return $this
+     */
+    public function toParty($party)
+    {
+        $this->data['toparty'] = implode('|', (array) $party);
+
+        return $this;
+    }
+
+    /**
+     * @param int $agent
+     *
+     * @return $this
+     */
+    public function ofAgent(int $agent)
+    {
+        $this->data['agentid'] = $agent;
+
+        return $this;
+    }
+
+    /**
+     * @param $message
+     *
+     * @return $this
+     */
+    public function withReply($message)
+    {
+        $this->data += Message::parse($message)->transform();
+
+        return $this;
     }
 }

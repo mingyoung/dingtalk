@@ -42,7 +42,7 @@ class Messenger
 
     public function toUser($user)
     {
-        $this->user = implode('|', (array) $user);
+        $this->user = implode(',', (array) $user);
 
         return $this;
     }
@@ -51,7 +51,7 @@ class Messenger
 
     public function toParty($party)
     {
-        $this->party = implode('|', (array) $party);
+        $this->party = implode(',', (array) $party);
 
         return $this;
     }

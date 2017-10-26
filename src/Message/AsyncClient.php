@@ -86,7 +86,7 @@ class AsyncClient extends BaseClient
      */
     public function toUser($user)
     {
-        $this->data['userid_list'] = implode('|', (array) $user);
+        $this->data['userid_list'] = implode(',', (array) $user);
 
         return $this;
     }
@@ -98,7 +98,7 @@ class AsyncClient extends BaseClient
      */
     public function toParty($party)
     {
-        $this->data['dept_id_list'] = implode('|', (array) $party);
+        $this->data['dept_id_list'] = implode(',', (array) $party);
 
         return $this;
     }

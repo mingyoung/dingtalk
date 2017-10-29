@@ -31,9 +31,9 @@ class Client extends BaseClient
     {
         if ($id == 0) {
             return $this->httpGet('department/list');
-        } else {
-            return $this->httpGet('department/list', compact('id'));
         }
+
+        return $this->httpGet('department/list', compact('id'));
     }
 
     /**

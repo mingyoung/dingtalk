@@ -43,7 +43,7 @@ abstract class Message
      *
      * @return \EasyDingTalk\Kernel\Messages\Message
      */
-    public static function parse($message): Message
+    public static function parse($message): self
     {
         if (is_int($message) || is_string($message)) {
             $message = new Text($message);

@@ -11,8 +11,8 @@
 
 namespace EasyDingTalk\Kernel;
 
-use EasyDingTalk\Application;
 use GuzzleHttp\HandlerStack;
+use EasyDingTalk\Application;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 
@@ -120,7 +120,7 @@ class BaseClient
      */
     protected function requestDingTalk($method, $uri, array $options = [])
     {
-        if (!$handler = $this->dingtalkHandlerStack) {
+        if (! $handler = $this->dingtalkHandlerStack) {
             $handler = HandlerStack::create();
 
             $handler->push(function (callable $handler) {
@@ -143,7 +143,7 @@ class BaseClient
      */
     protected function requestTaobao($method, array $options = [])
     {
-        if (!$handler = $this->taobaoHandlerStack) {
+        if (! $handler = $this->taobaoHandlerStack) {
             $handler = HandlerStack::create();
             $handler->push(function (callable $handler) {
                 return function (RequestInterface $request, array $options) use ($handler) {

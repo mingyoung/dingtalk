@@ -12,8 +12,8 @@
 namespace EasyDingTalk\Tests\Jssdk;
 
 use EasyDingTalk\Jssdk\Client;
-use EasyDingTalk\Jssdk\ConfigBuilder;
 use EasyDingTalk\Tests\TestCase;
+use EasyDingTalk\Jssdk\ConfigBuilder;
 
 class ConfigBuilderTest extends TestCase
 {

@@ -11,11 +11,11 @@
 
 namespace EasyDingTalk\Kernel;
 
-use GuzzleHttp\Client as GuzzleHttp;
 use Pimple\Container;
+use GuzzleHttp\Client as GuzzleHttp;
 use Pimple\ServiceProviderInterface;
-use Symfony\Component\Cache\Simple\FilesystemCache;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Cache\Simple\FilesystemCache;
 
 /**
  * Class ServiceProvider.

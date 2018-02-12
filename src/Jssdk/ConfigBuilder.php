@@ -11,8 +11,8 @@
 
 namespace EasyDingTalk\Jssdk;
 
-use function EasyDingTalk\Kernel\Support\current_url;
 use function EasyDingTalk\Kernel\Support\str_random;
+use function EasyDingTalk\Kernel\Support\current_url;
 
 /**
  * Class ConfigBuilder.

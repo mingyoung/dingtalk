@@ -135,7 +135,7 @@ class Client extends BaseClient
      *
      * @return array
      */
-    public function getUserInfo(string $code)n
+    public function getUserInfo(string $code)
     {
         return $this->httpGet('user/getuserinfo', ['code' => $code]);
     }

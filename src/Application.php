@@ -50,7 +50,6 @@ class Application extends Container
         Microapp\ServiceProvider::class,
         Attendance\ServiceProvider::class,
         Department\ServiceProvider::class,
-        
     ];
 
     /**

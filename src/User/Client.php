@@ -39,7 +39,7 @@ class Client extends BaseClient
      */
     public function create(array $params)
     {
-        return $this->http->json('user/create', $params);
+        return $this->httpPostJson('user/create', $params);
     }
 
     /**
@@ -51,7 +51,7 @@ class Client extends BaseClient
      */
     public function update(array $params)
     {
-        return $this->http->json('user/update', $params);
+        return $this->httpPostJson('user/update', $params);
     }
 
     /**
@@ -62,7 +62,7 @@ class Client extends BaseClient
     public function delete($userId)
     {
         if (is_array($userId)) {
-            return $this->http->json('user/batchdelete', ['useridlist' => $userId]);
+            return $this->httpPostJson('user/batchdelete', ['useridlist' => $userId]);
         }
 
         return $this->httpGet('user/delete', $userId);

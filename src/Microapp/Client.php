@@ -3,7 +3,7 @@
 /*
  * This file is part of the mingyoung/dingtalk.
  *
- * (c) baijunyao <baijunyao@baijunyao.com>
+ * (c) mingyoung <mingyoungcheung@gmail.com>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -52,8 +52,9 @@ class Client extends BaseClient
     public function delete(int $agentId)
     {
         $params = [
-            'agentId' => $agentId
+            'agentId' => $agentId,
         ];
+
         return $this->httpPostJson('microapp/delete', $params);
     }
 
@@ -83,8 +84,9 @@ class Client extends BaseClient
     public function visibleScopes($agentId)
     {
         $params = [
-            'agentId' => $agentId
+            'agentId' => $agentId,
         ];
+
         return $this->httpPostJson('microapp/visible_scopes', $params);
     }
 
@@ -95,5 +97,4 @@ class Client extends BaseClient
     {
         return $this->httpPostJson('microapp/set_visible_scopes', $params);
     }
-
 }

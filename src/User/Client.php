@@ -129,7 +129,7 @@ class Client extends BaseClient
     {
         return $this->httpGet('user/get_org_user_count', $params);
     }
-    
+
     /**
      * @param string $code
      *

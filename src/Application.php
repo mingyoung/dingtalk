@@ -26,6 +26,7 @@ use Pimple\Container;
  * @property \EasyDingTalk\Jssdk\Client $jssdk
  * @property \EasyDingTalk\Checkin\Client $checkin
  * @property \EasyDingTalk\Message\Client $message
+ * @property \EasyDingTalk\Microapp\Client $microapp
  * @property \EasyDingTalk\Attendance\Client $attendance
  * @property \EasyDingTalk\Kernel\Credential $credential
  * @property \EasyDingTalk\Department\Client $department
@@ -46,6 +47,7 @@ class Application extends Container
         Kernel\ServiceProvider::class,
         Checkin\ServiceProvider::class,
         Message\ServiceProvider::class,
+        Microapp\ServiceProvider::class,
         Attendance\ServiceProvider::class,
         Department\ServiceProvider::class,
     ];

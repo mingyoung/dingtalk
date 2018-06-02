@@ -18,19 +18,20 @@ use Pimple\Container;
  *
  * @author mingyoung <mingyoungcheung@gmail.com>
  *
- * @property \EasyDingTalk\Auth\Client $auth
- * @property \EasyDingTalk\Chat\Client $chat
- * @property \EasyDingTalk\Role\Client $role
- * @property \EasyDingTalk\User\Client $user
- * @property \EasyDingTalk\Media\Client $media
- * @property \EasyDingTalk\Jssdk\Client $jssdk
- * @property \EasyDingTalk\Checkin\Client $checkin
- * @property \EasyDingTalk\Message\Client $message
- * @property \EasyDingTalk\Process\Client $process
- * @property \EasyDingTalk\Microapp\Client $microapp
- * @property \EasyDingTalk\Attendance\Client $attendance
- * @property \EasyDingTalk\Kernel\Credential $credential
- * @property \EasyDingTalk\Department\Client $department
+ * @property \EasyDingTalk\Auth\Client         $auth
+ * @property \EasyDingTalk\Chat\Client         $chat
+ * @property \EasyDingTalk\Role\Client         $role
+ * @property \EasyDingTalk\User\Client         $user
+ * @property \EasyDingTalk\Media\Client        $media
+ * @property \EasyDingTalk\Jssdk\Client        $jssdk
+ * @property \EasyDingTalk\Report\Client       $report
+ * @property \EasyDingTalk\Checkin\Client      $checkin
+ * @property \EasyDingTalk\Message\Client      $message
+ * @property \EasyDingTalk\Process\Client      $process
+ * @property \EasyDingTalk\Microapp\Client     $microapp
+ * @property \EasyDingTalk\Attendance\Client   $attendance
+ * @property \EasyDingTalk\Kernel\Credential   $credential
+ * @property \EasyDingTalk\Department\Client   $department
  * @property \EasyDingTalk\Message\AsyncClient $async_message
  */
 class Application extends Container
@@ -46,6 +47,7 @@ class Application extends Container
         Jssdk\ServiceProvider::class,
         Media\ServiceProvider::class,
         Kernel\ServiceProvider::class,
+        Report\ServiceProvider::class,
         Checkin\ServiceProvider::class,
         Message\ServiceProvider::class,
         Process\ServiceProvider::class,

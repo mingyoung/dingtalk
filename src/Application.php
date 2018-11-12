@@ -36,6 +36,8 @@ use Pimple\Container;
  */
 class Application extends Container
 {
+    public static $useOApi = false;
+
     /**
      * @var array
      */

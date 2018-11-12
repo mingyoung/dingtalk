@@ -11,6 +11,7 @@
 
 namespace EasyDingTalk\Report;
 
+use EasyDingTalk\Application;
 use EasyDingTalk\Kernel\BaseClient;
 
 /**
@@ -34,14 +35,18 @@ class Client extends BaseClient
      */
     public function list(int $startTime, int $endTime, $cursor = 0, $size = 10, $templateName = null, $userId = null)
     {
-        return $this->httpGetMethod('dingtalk.corp.report.list', [
+        $params = [
             'start_time' => $startTime,
             'end_time' => $endTime,
             'cursor' => $cursor,
             'size' => $size,
             'template_name' => $templateName,
             'userid' => $userId,
-        ]);
+        ];
+
+        return Application::$useOApi
+            ? $this->httpPostJson('topapi/report/list', $params)
+            : $this->httpGetMethod('dingtalk.corp.report.list', $params);
     }
 
     /**
@@ -55,11 +60,15 @@ class Client extends BaseClient
      */
     public function templates($userId, $offset = null, $size = null)
     {
-        return $this->httpGetMethod('dingtalk.oapi.report.template.listbyuserid', [
+        $params = [
             'userid' => $userId,
             'offset' => $offset,
             'size' => $size,
-        ]);
+        ];
+
+        return Application::$useOApi
+            ? $this->httpPostJson('topapi/report/template/listbyuserid', $params)
+            : $this->httpGetMethod('dingtalk.oapi.report.template.listbyuserid', $params);
     }
 
     /**
@@ -71,8 +80,12 @@ class Client extends BaseClient
      */
     public function getUnreadCount($userId = null)
     {
-        return $this->httpGetMethod('dingtalk.oapi.report.getunreadcount', [
+        $params = [
             'userid' => $userId,
-        ]);
+        ];
+
+        return Application::$useOApi
+            ? $this->httpPostJson('topapi/report/getunreadcount', $params)
+            : $this->httpGetMethod('dingtalk.oapi.report.getunreadcount', $params);
     }
 }

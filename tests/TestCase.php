@@ -25,7 +25,9 @@ class TestCase extends BaseTestCase
      */
     protected function make($client)
     {
-        $app = $this->newApplication(['http.response_type' => 'raw']);
+        $app = $this->newApplication([
+            'http' => ['response_type' => 'raw'],
+        ]);
 
         $response = new TestResponse(200, [], '{"mock": "test"}');
 

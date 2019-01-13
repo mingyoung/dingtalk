@@ -119,7 +119,7 @@ class Client extends BaseClient
      */
     public function update(array $params)
     {
-        return $this->app['client']->postJson('user/update', $params);
+        return $this->app['client']->postJson('user/update', compact('userid') + $params);
     }
 
     /**

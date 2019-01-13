@@ -26,6 +26,7 @@ class ApplicationTest extends TestCase
             'client' => \EasyDingTalk\Kernel\Http\Client::class,
             'user' => \EasyDingTalk\User\Client::class,
             'chat' => \EasyDingTalk\Chat\Client::class,
+            'department' => \EasyDingTalk\Department\Client::class,
         ];
 
         $this->assertCount(count($services), $app->keys());

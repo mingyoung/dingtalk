@@ -19,7 +19,7 @@ class BaseClient
     protected $app;
 
     /**
-     * @var mixed
+     * @var \EasyDingTalk\Kernel\Http\Client
      */
     protected $client;
 
@@ -31,8 +31,7 @@ class BaseClient
     public function __construct($app)
     {
         $this->app = $app;
-
-        $this->app['client']->withAccessTokenMiddleware()->withRetryMiddleware();
         $this->client = $this->app['client'];
+        $this->client->withAccessTokenMiddleware()->withRetryMiddleware();
     }
 }

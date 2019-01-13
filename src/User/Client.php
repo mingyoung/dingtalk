@@ -118,7 +118,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function update(array $params)
+    public function update($userid, array $params)
     {
         return $this->app['client']->postJson('user/update', compact('userid') + $params);
     }

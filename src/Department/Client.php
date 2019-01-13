@@ -74,7 +74,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function getParentsByUser($userId)
+    public function getParentsByUserId($userId)
     {
         return $this->client->get('department/list_parent_depts', compact('userId'));
     }

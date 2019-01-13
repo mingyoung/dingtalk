@@ -10,4 +10,4 @@
     <a href="https://packagist.org/packages/mingyoung/dingtalk"><img src="https://poser.pugx.org/mingyoung/dingtalk/license.svg" alt="License"></a>
 </p>
 
-> 当前分支为 2.0 版本，正在开发中，请使用 [1.0](https://github.com/mingyoung/dingtalk/edit/master/README.md) 版本
+> 当前分支为 2.0 版本，正在开发中，请使用 [1.0](https://github.com/mingyoung/dingtalk/tree/1.0) 版本

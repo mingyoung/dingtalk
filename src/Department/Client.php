@@ -36,7 +36,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function getDepartments($isFetchChild = false, $id = null, $lang = null)
+    public function list($id = null, $isFetchChild = false, $lang = null)
     {
         return $this->client->get('department/list',
             compact('id', 'lang') + ['fetch_child' => $isFetchChild]);

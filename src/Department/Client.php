@@ -15,19 +15,6 @@ use EasyDingTalk\Kernel\BaseClient;
 
 class Client extends BaseClient
 {
-    private $client;
-
-    /**
-     * Client constructor.
-     *
-     * @param \EasyDingTalk\Application $app
-     */
-    public function __construct($app)
-    {
-        parent::__construct($app);
-        $this->client = $this->app['client'];
-    }
-
     /**
      * 获取子部门ID列表
      *

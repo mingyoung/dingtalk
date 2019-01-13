@@ -19,6 +19,11 @@ class BaseClient
     protected $app;
 
     /**
+     * @var mixed
+     */
+    protected $client;
+
+    /**
      * Client constructor.
      *
      * @param \EasyDingTalk\Application $app
@@ -28,5 +33,6 @@ class BaseClient
         $this->app = $app;
 
         $this->app['client']->withAccessTokenMiddleware()->withRetryMiddleware();
+        $this->client = $this->app['client'];
     }
 }

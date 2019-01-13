@@ -109,4 +109,29 @@ class Client extends BaseClient
     {
         return $this->app['client']->postJson('user/create', $params);
     }
+
+    /**
+     * 更新用户
+     *
+     * @param string $userid
+     * @param array  $params
+     *
+     * @return mixed
+     */
+    public function update($userid, array $params)
+    {
+        return $this->app['client']->postJson('user/update', compact('userid') + $params);
+    }
+
+    /**
+     * 删除用户
+     *
+     * @param $userid
+     *
+     * @return mixed
+     */
+    public function delete($userid)
+    {
+        return $this->app['client']->get('user/delete', compact('userid'));
+    }
 }

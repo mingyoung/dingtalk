@@ -27,6 +27,7 @@ class Application extends Container
         Kernel\Http\ServiceProvider::class,
         User\ServiceProvider::class,
         Chat\ServiceProvider::class,
+        Report\ServiceProvider::class,
     ];
 
     /**

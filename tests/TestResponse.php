@@ -16,8 +16,19 @@ use PHPUnit\Framework\Assert;
 
 class TestResponse extends Response
 {
+    /**
+     * @var string
+     */
     protected $method;
+
+    /**
+     * @var string
+     */
     protected $uri;
+
+    /**
+     * @var array
+     */
     protected $options;
 
     /**
@@ -34,20 +45,44 @@ class TestResponse extends Response
         };
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     *
+     * @param string $uri
+     *
+     * @return $this
+     */
     public function assertUri($uri)
     {
-        Assert::assertSame(
-            $this->uri, $uri, 'Not the same uri.'
-        );
+        Assert::assertSame($this->uri, $uri);
 
         return $this;
     }
 
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     *
+     * @param array $query
+     *
+     * @return $this
+     */
     public function assertQuery($query)
     {
-        Assert::assertSame(
-            $this->options['query'], $query, 'not the same query.'
-        );
+        Assert::assertSame($this->options['query'], $query);
+
+        return $this;
+    }
+
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     *
+     * @param array $json
+     *
+     * @return $this
+     */
+    public function assertPostJson($json)
+    {
+        Assert::assertSame($this->options['json'], $json);
 
         return $this;
     }

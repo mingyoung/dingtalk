@@ -1,5 +1,9 @@
 {
     "name": "mingyoung/dingtalk",
+    "description": "钉钉 SDK",
+    "keywords": [
+        "dingtalk"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -7,5 +11,27 @@
             "email": "mingyoungcheung@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.0",
+        "overtrue/http": "^1.1",
+        "pimple/pimple": "^3.0",
+        "symfony/cache": "^3.3 || ^4.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "EasyDingTalk\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EasyDingTalk\\Tests\\": "tests/"
+        }
+    }
 }

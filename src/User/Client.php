@@ -113,7 +113,8 @@ class Client extends BaseClient
     /**
      * 更新用户
      *
-     * @param array $params
+     * @param string $userid
+     * @param array  $params
      *
      * @return mixed
      */

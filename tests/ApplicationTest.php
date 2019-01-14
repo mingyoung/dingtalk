@@ -32,6 +32,7 @@ class ApplicationTest extends TestCase
             'microapp' => \EasyDingTalk\Microapp\Client::class,
             'blackboard' => \EasyDingTalk\Blackboard\Client::class,
             'calendar' => \EasyDingTalk\Calendar\Client::class,
+            'health' => \EasyDingTalk\Health\Client::class,
         ];
 
         $this->assertCount(count($services), $app->keys());

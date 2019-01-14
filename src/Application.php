@@ -30,6 +30,8 @@ class Application extends Container
         Department\ServiceProvider::class,
         Report\ServiceProvider::class,
         Role\ServiceProvider::class,
+        Microapp\Client::class,
+        Blackboard\Client::class,
     ];
 
     /**

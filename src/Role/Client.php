@@ -119,8 +119,8 @@ class Client extends BaseClient
     /**
      * 批量增加员工角色
      *
-     * @param string $roleIds
-     * @param string $userIds
+     * @param array $roleIds
+     * @param array $userIds
      *
      * @return mixed
      */
@@ -132,8 +132,8 @@ class Client extends BaseClient
     /**
      * 批量删除员工角色
      *
-     * @param string $roleIds
-     * @param string $userIds
+     * @param array $roleIds
+     * @param array $userIds
      *
      * @return mixed
      */

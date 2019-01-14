@@ -28,7 +28,7 @@ class ApplicationTest extends TestCase
             'chat' => \EasyDingTalk\Chat\Client::class,
             'department' => \EasyDingTalk\Department\Client::class,
             'report' => \EasyDingTalk\Report\Client::class,
-            'role'=> \EasyDingTalk\Role\Client::class,
+            'role' => \EasyDingTalk\Role\Client::class,
         ];
 
         $this->assertCount(count($services), $app->keys());

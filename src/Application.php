@@ -32,6 +32,7 @@ class Application extends Container
         Role\ServiceProvider::class,
         Microapp\Client::class,
         Blackboard\Client::class,
+        Calendar\Client::class,
     ];
 
     /**

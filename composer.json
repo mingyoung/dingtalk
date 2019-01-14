@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=7.0",
-        "overtrue/http": "^1.1",
+        "overtrue/http": "^1.1.2",
         "pimple/pimple": "^3.0",
         "symfony/cache": "^3.3 || ^4.0"
     },

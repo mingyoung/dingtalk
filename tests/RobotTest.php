@@ -20,6 +20,10 @@ class RobotTest extends TestCase
     /** @test */
     public function create()
     {
+        if (1 === version_compare(\PHPUnit\Runner\Version::series(), 6)) {
+            $this->markTestSkipped();
+        }
+
         $robot = Mockery::mock(Robot::class.'[getHttpClient]', ['mock-token']);
         $robot->shouldReceive('getHttpClient->request')->withArgs(function ($method, $url, $content) {
             $this->assertSame('POST', $method);

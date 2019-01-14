@@ -30,6 +30,10 @@ class Application extends Container
         Department\ServiceProvider::class,
         Report\ServiceProvider::class,
         Role\ServiceProvider::class,
+        Microapp\ServiceProvider::class,
+        Blackboard\ServiceProvider::class,
+        Calendar\ServiceProvider::class,
+        Health\ServiceProvider::class,
     ];
 
     /**

@@ -29,6 +29,7 @@ class Application extends Container
         Chat\ServiceProvider::class,
         Department\ServiceProvider::class,
         Report\ServiceProvider::class,
+        Role\ServiceProvider::class,
     ];
 
     /**

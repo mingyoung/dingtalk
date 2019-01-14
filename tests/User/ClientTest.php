@@ -16,7 +16,7 @@ use EasyDingTalk\User\Client;
 
 class ClientTest extends TestCase
 {
-    /** @test */
+    /** @test 获取用户 */
     public function get()
     {
         $this->make(Client::class)->get('mingyoung')

@@ -33,6 +33,7 @@ use Pimple\Container;
  * @property \EasyDingTalk\Kernel\Credential   $credential
  * @property \EasyDingTalk\Department\Client   $department
  * @property \EasyDingTalk\Message\AsyncClient $async_message
+ * @property \EasyDingTalk\Extcontact\Client   $Extcontact
  */
 class Application extends Container
 {
@@ -56,6 +57,7 @@ class Application extends Container
         Microapp\ServiceProvider::class,
         Attendance\ServiceProvider::class,
         Department\ServiceProvider::class,
+        Extcontact\ServiceProvider::class,
     ];
 
     /**

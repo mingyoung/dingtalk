@@ -23,17 +23,22 @@ class Application extends Container
      * @var array
      */
     protected $providers = [
-        Kernel\ServiceProvider::class,
-        Kernel\Http\ServiceProvider::class,
-        User\ServiceProvider::class,
         Chat\ServiceProvider::class,
-        Department\ServiceProvider::class,
-        Report\ServiceProvider::class,
         Role\ServiceProvider::class,
-        Microapp\ServiceProvider::class,
-        Blackboard\ServiceProvider::class,
-        Calendar\ServiceProvider::class,
+        User\ServiceProvider::class,
+        Media\ServiceProvider::class,
+        Scope\ServiceProvider::class,
         Health\ServiceProvider::class,
+        Kernel\ServiceProvider::class,
+        Report\ServiceProvider::class,
+        Contact\ServiceProvider::class,
+        Calendar\ServiceProvider::class,
+        Microapp\ServiceProvider::class,
+        Schedule\ServiceProvider::class,
+        Blackboard\ServiceProvider::class,
+        Department\ServiceProvider::class,
+        Kernel\Http\ServiceProvider::class,
+        Conversation\ServiceProvider::class,
     ];
 
     /**

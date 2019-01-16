@@ -21,18 +21,23 @@ class ApplicationTest extends TestCase
         $app = new Application();
 
         $services = [
-            'config' => \Overtrue\Http\Support\Collection::class,
-            'access_token' => \EasyDingTalk\Kernel\AccessToken::class,
-            'client' => \EasyDingTalk\Kernel\Http\Client::class,
-            'user' => \EasyDingTalk\User\Client::class,
             'chat' => \EasyDingTalk\Chat\Client::class,
-            'department' => \EasyDingTalk\Department\Client::class,
-            'report' => \EasyDingTalk\Report\Client::class,
+            'user' => \EasyDingTalk\User\Client::class,
             'role' => \EasyDingTalk\Role\Client::class,
-            'microapp' => \EasyDingTalk\Microapp\Client::class,
-            'blackboard' => \EasyDingTalk\Blackboard\Client::class,
-            'calendar' => \EasyDingTalk\Calendar\Client::class,
+            'media' => \EasyDingTalk\Media\Client::class,
+            'scope' => \EasyDingTalk\Scope\Client::class,
+            'report' => \EasyDingTalk\Report\Client::class,
             'health' => \EasyDingTalk\Health\Client::class,
+            'contact' => \EasyDingTalk\Contact\Client::class,
+            'calendar' => \EasyDingTalk\Calendar\Client::class,
+            'schedule' => \EasyDingTalk\Schedule\Client::class,
+            'microapp' => \EasyDingTalk\Microapp\Client::class,
+            'client' => \EasyDingTalk\Kernel\Http\Client::class,
+            'config' => \Overtrue\Http\Support\Collection::class,
+            'blackboard' => \EasyDingTalk\Blackboard\Client::class,
+            'department' => \EasyDingTalk\Department\Client::class,
+            'access_token' => \EasyDingTalk\Kernel\AccessToken::class,
+            'conversation' => \EasyDingTalk\Conversation\Client::class,
         ];
 
         $this->assertCount(count($services), $app->keys());

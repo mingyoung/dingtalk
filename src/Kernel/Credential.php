@@ -78,6 +78,8 @@ class Credential
         return [
             'corpid' => $this->app['config']->get('corp_id'),
             'corpsecret' => $this->app['config']->get('corp_secret'),
+            'appkey' => $this->app['config']->get('appkey'),
+            'appsecret' => $this->app['config']->get('appsecret'),
         ];
     }
 

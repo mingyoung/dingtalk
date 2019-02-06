@@ -99,6 +99,18 @@ class Client extends BaseClient
     }
 
     /**
+     * 根据unionid获取userid
+     *
+     * @param string $unionid
+     *
+     * @return mixed
+     */
+    public function getUseridByUnionid($unionid)
+    {
+        return $this->app['client']->get('user/getUseridByUnionid', compact('unionid'));
+    }
+
+    /**
      * 创建用户
      *
      * @param array $params
@@ -133,5 +145,17 @@ class Client extends BaseClient
     public function delete($userid)
     {
         return $this->app['client']->get('user/delete', compact('userid'));
+    }
+
+    /**
+     * 企业内部应用免登获取用户userid
+     *
+     * @param string $unionid
+     *
+     * @return mixed
+     */
+    public function getuserinfobyCode($code)
+    {
+        return $this->app['client']->get('user/getuserinfo', compact('code'));
     }
 }

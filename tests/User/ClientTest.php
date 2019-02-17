@@ -32,4 +32,65 @@ class ClientTest extends TestCase
         $this->make(Client::class)->getUserIds('123')
             ->assertUri('user/getDeptMember')->assertQuery(['deptId' => '123']);
     }
+
+    /** @test */
+    public function getUsers()
+    {
+        $this->make(Client::class)->getUsers('123', 10, 20)
+            ->assertUri('user/simplelist')->assertQuery(['department_id' => '123', 'offset' => 10, 'size' => 20, 'order' => null, 'lang' => null]);
+    }
+
+    /** @test */
+    public function getDetailedUsers()
+    {
+        $this->make(Client::class)->getDetailedUsers('123', 10, 20)
+            ->assertUri('user/listbypage')->assertQuery(['department_id' => '123', 'offset' => 10, 'size' => 20, 'order' => null, 'lang' => null]);
+    }
+
+    /** @test */
+    public function administrators()
+    {
+        $this->make(Client::class)->administrators()
+            ->assertUri('user/get_admin');
+    }
+
+    /** @test */
+    public function administratorScope()
+    {
+        $this->make(Client::class)->administratorScope('mingyoung')
+            ->assertUri('topapi/user/get_admin_scope')->assertQuery(['userid' => 'mingyoung']);
+    }
+
+    /** @test */
+    public function getUseridByUnionid()
+    {
+        $this->make(Client::class)->getUseridByUnionid('mingyoung')
+            ->assertUri('user/getUseridByUnionid')->assertQuery(['unionid' => 'mingyoung']);
+    }
+
+    /** @test */
+    public function create()
+    {
+        $this->make(Client::class)->create(['userid' => 'mingyoung', 'name' => 'MINGYOUNG'])
+            ->assertUri('user/create')->assertPostJson([
+                'userid' => 'mingyoung', 'name' => 'MINGYOUNG',
+            ]);
+    }
+
+    /** @test */
+    public function update()
+    {
+        $this->make(Client::class)->update('mingyoung', ['name' => 'MINGYOUNG'])
+            ->assertUri('user/update')->assertPostJson([
+                'userid' => 'mingyoung',
+                'name' => 'MINGYOUNG',
+            ]);
+    }
+
+    /** @test */
+    public function delete()
+    {
+        $this->make(Client::class)->delete('mingyoung')
+            ->assertUri('user/delete')->assertQuery(['userid' => 'mingyoung']);
+    }
 }

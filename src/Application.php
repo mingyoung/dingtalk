@@ -27,7 +27,6 @@ class Application extends Container
         Role\ServiceProvider::class,
         User\ServiceProvider::class,
         Media\ServiceProvider::class,
-        Scope\ServiceProvider::class,
         Health\ServiceProvider::class,
         Kernel\ServiceProvider::class,
         Report\ServiceProvider::class,

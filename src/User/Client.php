@@ -148,14 +148,46 @@ class Client extends BaseClient
     }
 
     /**
-     * 企业内部应用免登获取用户userid
+     * 企业内部应用免登获取用户 Userid
      *
-     * @param string $unionid
+     * @param string $code
      *
      * @return mixed
      */
-    public function getuserinfobyCode($code)
+    public function getUserByCode($code)
     {
         return $this->app['client']->get('user/getuserinfo', compact('code'));
+    }
+
+    /**
+     * 批量增加员工角色
+     *
+     * @param array|string $userIds
+     * @param array|string $roleIds
+     *
+     * @return mixed
+     */
+    public function addRoles($userIds, $roleIds)
+    {
+        $userIds = is_array($userIds) ? implode(',', $userIds) : $userIds;
+        $roleIds = is_array($roleIds) ? implode(',', $roleIds) : $roleIds;
+
+        return $this->client->postJson('topapi/role/addrolesforemps', compact('userIds', 'roleIds'));
+    }
+
+    /**
+     * 批量删除员工角色
+     *
+     * @param array|string $userIds
+     * @param array|string $roleIds
+     *
+     * @return mixed
+     */
+    public function removeRoles($userIds, $roleIds)
+    {
+        $userIds = is_array($userIds) ? implode(',', $userIds) : $userIds;
+        $roleIds = is_array($roleIds) ? implode(',', $roleIds) : $roleIds;
+
+        return $this->client->postJson('topapi/role/removerolesforemps', compact('userIds', 'roleIds'));
     }
 }

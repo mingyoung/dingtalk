@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace EasyDingTalk\Scope;
+namespace EasyDingTalk\Callback;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
@@ -25,7 +25,7 @@ class ServiceProvider implements ServiceProviderInterface
      */
     public function register(Container $pimple)
     {
-        $pimple['scope'] = function ($app) {
+        $pimple['callback'] = function ($app) {
             return new Client($app);
         };
     }

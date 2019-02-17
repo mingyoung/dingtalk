@@ -23,7 +23,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function getGroups($offset = 0, $size = 20)
+    public function tags($offset, $size)
     {
         return $this->client->postJson('topapi/extcontact/listlabelgroups', compact('offset', 'size'));
     }
@@ -36,7 +36,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function list($offset = 0, $size = 20)
+    public function list($offset, $size)
     {
         return $this->client->postJson('topapi/extcontact/list', compact('offset', 'size'));
     }
@@ -62,7 +62,7 @@ class Client extends BaseClient
      */
     public function create($contact)
     {
-        return $this->client->postJson('topapi/extcontact/create', $contact);
+        return $this->client->postJson('topapi/extcontact/create', compact('contact'));
     }
 
     /**
@@ -90,5 +90,16 @@ class Client extends BaseClient
     public function delete($userId)
     {
         return $this->client->postJson('topapi/extcontact/delete', ['user_id' => $userId]);
+    }
+
+    /**
+     * 获取通讯录权限范围
+     *
+     *
+     * @return mixed
+     */
+    public function scopes()
+    {
+        return $this->client->get('auth/scopes');
     }
 }

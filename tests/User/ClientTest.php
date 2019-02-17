@@ -93,4 +93,31 @@ class ClientTest extends TestCase
         $this->make(Client::class)->delete('mingyoung')
             ->assertUri('user/delete')->assertQuery(['userid' => 'mingyoung']);
     }
+
+    /** @test */
+    public function getUserByCode()
+    {
+        $this->make(Client::class)->getUserByCode('code')
+            ->assertUri('user/getuserinfo')->assertQuery(['code' => 'code']);
+    }
+
+    /** @test */
+    public function addRoles()
+    {
+        $this->make(Client::class)->addRoles('user1,user2', 'role1,role2')
+            ->assertUri('topapi/role/addrolesforemps')->assertPostJson(['userIds' => 'user1,user2', 'roleIds' => 'role1,role2']);
+
+        $this->make(Client::class)->addRoles(['user1', 'user2'], ['role1', 'role2'])
+            ->assertUri('topapi/role/addrolesforemps')->assertPostJson(['userIds' => 'user1,user2', 'roleIds' => 'role1,role2']);
+    }
+
+    /** @test */
+    public function removeRoles()
+    {
+        $this->make(Client::class)->removeRoles('user1,user2', 'role1,role2')
+            ->assertUri('topapi/role/removerolesforemps')->assertPostJson(['userIds' => 'user1,user2', 'roleIds' => 'role1,role2']);
+
+        $this->make(Client::class)->removeRoles(['user1', 'user2'], ['role1', 'role2'])
+            ->assertUri('topapi/role/removerolesforemps')->assertPostJson(['userIds' => 'user1,user2', 'roleIds' => 'role1,role2']);
+    }
 }

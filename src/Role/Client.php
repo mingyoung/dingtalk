@@ -23,7 +23,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function list($offset = 0, $size = 20)
+    public function list($offset = null, $size = null)
     {
         return $this->client->postJson('topapi/role/list', compact('offset', 'size'));
     }
@@ -37,7 +37,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function getUsers($roleId, $offset = 0, $size = 20)
+    public function getUsers($roleId, $offset = null, $size = null)
     {
         return $this->client->postJson('topapi/role/simplelist', compact('offset', 'size') + ['role_id' => $roleId]);
     }
@@ -114,31 +114,5 @@ class Client extends BaseClient
     public function createGroup($name)
     {
         return $this->client->postJson('role/add_role_group', compact('name'));
-    }
-
-    /**
-     * 批量增加员工角色
-     *
-     * @param array $roleIds
-     * @param array $userIds
-     *
-     * @return mixed
-     */
-    public function addUserRoles($roleIds, $userIds)
-    {
-        return $this->client->postJson('topapi/role/addrolesforemps', compact('roleIds', 'userIds'));
-    }
-
-    /**
-     * 批量删除员工角色
-     *
-     * @param array $roleIds
-     * @param array $userIds
-     *
-     * @return mixed
-     */
-    public function deleteUserRoles($roleIds, $userIds)
-    {
-        return $this->client->postJson('topapi/role/removerolesforemps', compact('roleIds', 'userIds'));
     }
 }

@@ -31,7 +31,6 @@ class BaseClient
     public function __construct($app)
     {
         $this->app = $app;
-        $this->client = $this->app['client'];
-        $this->client->withAccessTokenMiddleware()->withRetryMiddleware();
+        $this->client = $this->app['client']->withAccessTokenMiddleware()->withRetryMiddleware();
     }
 }

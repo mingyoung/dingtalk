@@ -25,7 +25,7 @@ class Client extends BaseClient
      */
     public function get($userid, $lang = null)
     {
-        return $this->app['client']->get('user/get', compact('userid', 'lang'));
+        return $this->client->get('user/get', compact('userid', 'lang'));
     }
 
     /**
@@ -37,7 +37,7 @@ class Client extends BaseClient
      */
     public function getUserIds($departmentId)
     {
-        return $this->app['client']->get('user/getDeptMember', ['deptId' => $departmentId]);
+        return $this->client->get('user/getDeptMember', ['deptId' => $departmentId]);
     }
 
     /**
@@ -53,7 +53,7 @@ class Client extends BaseClient
      */
     public function getUsers($departmentId, $offset, $size, $order = null, $lang = null)
     {
-        return $this->app['client']->get('user/simplelist', [
+        return $this->client->get('user/simplelist', [
             'department_id' => $departmentId, 'offset' => $offset, 'size' => $size, 'order' => $order, 'lang' => $lang,
         ]);
     }
@@ -71,7 +71,7 @@ class Client extends BaseClient
      */
     public function getDetailedUsers($departmentId, $offset, $size, $order = null, $lang = null)
     {
-        return $this->app['client']->get('user/listbypage', [
+        return $this->client->get('user/listbypage', [
             'department_id' => $departmentId, 'offset' => $offset, 'size' => $size, 'order' => $order, 'lang' => $lang,
         ]);
     }
@@ -83,7 +83,7 @@ class Client extends BaseClient
      */
     public function administrators()
     {
-        return $this->app['client']->get('user/get_admin');
+        return $this->client->get('user/get_admin');
     }
 
     /**
@@ -95,7 +95,7 @@ class Client extends BaseClient
      */
     public function administratorScope($userid)
     {
-        return $this->app['client']->get('topapi/user/get_admin_scope', compact('userid'));
+        return $this->client->get('topapi/user/get_admin_scope', compact('userid'));
     }
 
     /**
@@ -107,7 +107,7 @@ class Client extends BaseClient
      */
     public function getUseridByUnionid($unionid)
     {
-        return $this->app['client']->get('user/getUseridByUnionid', compact('unionid'));
+        return $this->client->get('user/getUseridByUnionid', compact('unionid'));
     }
 
     /**
@@ -119,7 +119,7 @@ class Client extends BaseClient
      */
     public function create(array $params)
     {
-        return $this->app['client']->postJson('user/create', $params);
+        return $this->client->postJson('user/create', $params);
     }
 
     /**
@@ -132,7 +132,7 @@ class Client extends BaseClient
      */
     public function update($userid, array $params)
     {
-        return $this->app['client']->postJson('user/update', compact('userid') + $params);
+        return $this->client->postJson('user/update', compact('userid') + $params);
     }
 
     /**
@@ -144,7 +144,7 @@ class Client extends BaseClient
      */
     public function delete($userid)
     {
-        return $this->app['client']->get('user/delete', compact('userid'));
+        return $this->client->get('user/delete', compact('userid'));
     }
 
     /**
@@ -156,7 +156,7 @@ class Client extends BaseClient
      */
     public function getUserByCode($code)
     {
-        return $this->app['client']->get('user/getuserinfo', compact('code'));
+        return $this->client->get('user/getuserinfo', compact('code'));
     }
 
     /**

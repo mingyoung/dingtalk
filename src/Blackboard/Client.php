@@ -22,7 +22,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function listByUserId($userid)
+    public function list($userid)
     {
         return $this->client->postJson('topapi/blackboard/listtopten', compact('userid'));
     }

@@ -22,7 +22,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function create($params)
+    public function add($params)
     {
         return $this->client->postJson('topapi/workrecord/add', $params);
     }
@@ -37,21 +37,26 @@ class Client extends BaseClient
      */
     public function update($userId, $recordId)
     {
-        return $this->client->postJson('topapi/workrecord/add', ['userid' => $userId, 'record_id' => $recordId]);
+        return $this->client->postJson('topapi/workrecord/update', ['userid' => $userId, 'record_id' => $recordId]);
     }
 
     /**
      * 获取用户待办事项
      *
      * @param string $userId
-     * @param int    $status
+     * @param bool   $completed
      * @param int    $offset
      * @param int    $limit
      *
      * @return mixed
      */
-    public function listByUserId($userId, $status, $offset, $limit)
+    public function list($userId, $completed, $offset, $limit)
     {
-        return $this->client->postJson('topapi/workrecord/getbyuserid', compact('status', 'offset', 'limit') + ['userid' => $userId]);
+        return $this->client->postJson('topapi/workrecord/getbyuserid', [
+            'userid' => $userId,
+            'status' => (int) $completed,
+            'offset' => $offset,
+            'limit' => $limit,
+        ]);
     }
 }

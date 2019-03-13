@@ -16,18 +16,56 @@ use EasyDingTalk\Tests\TestCase;
 
 class ClientTest extends TestCase
 {
-    public function testCreate()
+    /** @test */
+    public function add()
     {
-        $this->make(Client::class);
+        $this->make(Client::class)->add($params = [
+            'userid' => 'mingyoung',
+            'create_time' => 1496678400000,
+            'title' => '标题',
+            'url' => 'https://easydingtalk.org',
+            'formItemList' => [
+                [
+                    'title' => '标题',
+                    'content' => '内容',
+                ],
+            ],
+        ])
+            ->assertUri('topapi/workrecord/add')
+            ->assertPostJson($params);
     }
 
-    public function testUpdate()
+    /** @test */
+    public function update()
     {
-        $this->make(Client::class);
+        $this->make(Client::class)->update('mingyoung', 'record123')
+            ->assertUri('topapi/workrecord/update')
+            ->assertPostJson(['userid' => 'mingyoung', 'record_id' => 'record123']);
     }
 
-    public function testListByUserId()
+    /** @test */
+    public function completedList()
     {
-        $this->make(Client::class);
+        $this->make(Client::class)->list('mingyoung', true, 0, 50)
+            ->assertUri('topapi/workrecord/getbyuserid')
+            ->assertPostJson([
+                'userid' => 'mingyoung',
+                'status' => 1,
+                'offset' => 0,
+                'limit' => 50,
+            ]);
+    }
+
+    /** @test */
+    public function incompletedList()
+    {
+        $this->make(Client::class)->list('mingyoung', false, 0, 50)
+            ->assertUri('topapi/workrecord/getbyuserid')
+            ->assertPostJson([
+                'userid' => 'mingyoung',
+                'status' => 0,
+                'offset' => 0,
+                'limit' => 50,
+            ]);
     }
 }

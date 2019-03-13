@@ -37,6 +37,8 @@ class AccessToken
      * 获取钉钉 AccessToken
      *
      * @return array
+     *
+     * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function get()
     {
@@ -51,6 +53,8 @@ class AccessToken
      * 获取 AccessToken
      *
      * @return string
+     *
+     * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function getToken()
     {
@@ -64,7 +68,7 @@ class AccessToken
      */
     public function refresh()
     {
-        $response = $this->app['client']->requestRaw('gettoken', 'GET', ['query' => [
+        $response = $this->client->requestRaw('gettoken', 'GET', ['query' => [
             'appkey' => $this->app['config']->get('app_key'),
             'appsecret' => $this->app['config']->get('app_secret'),
         ]]);

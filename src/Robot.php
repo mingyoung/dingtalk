@@ -34,6 +34,8 @@ class Robot
 
     /**
      * @param string $accessToken
+     *
+     * @return self
      */
     public static function create($accessToken)
     {
@@ -46,6 +48,8 @@ class Robot
      * @param array $message
      *
      * @return array
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function send($message)
     {

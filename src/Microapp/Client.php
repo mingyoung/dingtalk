@@ -18,8 +18,6 @@ class Client extends BaseClient
     /**
      * 获取应用列表
      *
-
-     *
      * @return mixed
      */
     public function list()
@@ -36,7 +34,9 @@ class Client extends BaseClient
      */
     public function listByUserId($userId)
     {
-        return $this->client->get('microapp/list_by_userid', compact('userId'));
+        return $this->client->get('microapp/list_by_userid', [
+            'userid' => $userId,
+        ]);
     }
 
     /**
@@ -48,21 +48,18 @@ class Client extends BaseClient
      */
     public function visibleScopes($agentId)
     {
-        return $this->client->get('microapp/visible_scopes', compact('agentId'));
+        return $this->client->postJson('microapp/visible_scopes', compact('agentId'));
     }
 
     /**
      * 设置应用的可见范围
      *
-     * @param int   $agentId
-     * @param bool  $isHidden
-     * @param array $userIds
-     * @param array $departmentIds
+     * @param array $params
      *
      * @return mixed
      */
-    public function setVisibleScopes($agentId, $isHidden, $userIds, $departmentIds)
+    public function setVisibility($params)
     {
-        return $this->client->postJson('microapp/set_visible_scopes', compact('agentId', 'isHidden') + ['userVisibleScopes' => $userIds, 'deptVisibleScopes' => $departmentIds]);
+        return $this->client->postJson('microapp/set_visible_scopes', $params);
     }
 }

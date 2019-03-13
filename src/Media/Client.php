@@ -61,6 +61,6 @@ class Client extends BaseClient
      */
     public function upload($type, $media)
     {
-        return $this->client->upload('media/upload', ['media' => $media, 'type' => $type]);
+        return $this->client->upload('media/upload', ['media' => $media], compact('type'));
     }
 }

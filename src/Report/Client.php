@@ -24,7 +24,7 @@ class Client extends BaseClient
      */
     public function list($params)
     {
-        return $this->app['client']->postJson('topapi/report/list', $params);
+        return $this->client->postJson('topapi/report/list', $params);
     }
 
     /**
@@ -36,7 +36,7 @@ class Client extends BaseClient
      */
     public function templates($params)
     {
-        return $this->app['client']->postJson('topapi/report/template/listbyuserid', $params);
+        return $this->client->postJson('topapi/report/template/listbyuserid', $params);
     }
 
     /**
@@ -48,6 +48,6 @@ class Client extends BaseClient
      */
     public function unreadCount($userid)
     {
-        return $this->app['client']->postJson('topapi/report/getunreadcount', compact('userid'));
+        return $this->client->postJson('topapi/report/getunreadcount', compact('userid'));
     }
 }

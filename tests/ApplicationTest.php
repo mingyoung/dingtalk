@@ -25,7 +25,6 @@ class ApplicationTest extends TestCase
             'user' => \EasyDingTalk\User\Client::class,
             'role' => \EasyDingTalk\Role\Client::class,
             'media' => \EasyDingTalk\Media\Client::class,
-            'scope' => \EasyDingTalk\Scope\Client::class,
             'report' => \EasyDingTalk\Report\Client::class,
             'health' => \EasyDingTalk\Health\Client::class,
             'contact' => \EasyDingTalk\Contact\Client::class,

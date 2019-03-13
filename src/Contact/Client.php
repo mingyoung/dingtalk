@@ -95,7 +95,6 @@ class Client extends BaseClient
     /**
      * 获取通讯录权限范围
      *
-     *
      * @return mixed
      */
     public function scopes()

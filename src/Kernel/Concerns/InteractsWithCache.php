@@ -11,6 +11,7 @@
 
 namespace EasyDingTalk\Kernel\Concerns;
 
+use Psr\SimpleCache\CacheInterface;
 use Symfony\Component\Cache\Simple\FilesystemCache;
 
 trait InteractsWithCache

@@ -16,23 +16,40 @@ use EasyDingTalk\Tests\TestCase;
 
 class ClientTest extends TestCase
 {
-    public function testList()
+    /** @test */
+    public function list()
     {
-        $this->make(Client::class);
+        $this->make(Client::class)->list()
+            ->assertUri('microapp/list')->assertEmptyQuery();
     }
 
-    public function testListByUserId()
+    /** @test */
+    public function listByUserId()
     {
-        $this->make(Client::class);
+        $this->make(Client::class)->listByUserId('mingyoung')
+            ->assertUri('microapp/list_by_userid')->assertQuery(['userid' => 'mingyoung']);
     }
 
-    public function testVisibleScopes()
+    /** @test */
+    public function visibleScopes()
     {
-        $this->make(Client::class);
+        $this->make(Client::class)->visibleScopes('123')
+            ->assertUri('microapp/visible_scopes')->assertPostJson(['agentId' => '123']);
     }
 
-    public function testSetVisibleScopes()
+    /** @test */
+    public function setVisibility()
     {
-        $this->make(Client::class);
+        $this->make(Client::class)->setVisibility([
+            'agentId' => 123456,
+            'isHidden' => false,
+            'deptVisibleScopes' => [1, 2],
+            'userVisibleScopes' => ['user1', 'user2'],
+        ])->assertUri('microapp/set_visible_scopes')->assertPostJson([
+            'agentId' => 123456,
+            'isHidden' => false,
+            'deptVisibleScopes' => [1, 2],
+            'userVisibleScopes' => ['user1', 'user2'],
+        ]);
     }
 }

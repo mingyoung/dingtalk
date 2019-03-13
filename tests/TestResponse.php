@@ -48,6 +48,20 @@ class TestResponse extends Response
     /**
      * @throws \PHPUnit\Framework\ExpectationFailedException
      *
+     * @param string $method
+     *
+     * @return $this
+     */
+    public function assertMethod($method)
+    {
+        Assert::assertSame($this->method, $method);
+
+        return $this;
+    }
+
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     *
      * @param string $uri
      *
      * @return $this
@@ -62,6 +76,30 @@ class TestResponse extends Response
     /**
      * @throws \PHPUnit\Framework\ExpectationFailedException
      *
+     * @param string $uri
+     *
+     * @return $this
+     */
+    public function assertGetUri($uri)
+    {
+        return $this->assertMethod('GET')->assertUri($uri);
+    }
+
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     *
+     * @param string $uri
+     *
+     * @return $this
+     */
+    public function assertPostUri($uri)
+    {
+        return $this->assertMethod('POST')->assertUri($uri);
+    }
+
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     *
      * @param array $query
      *
      * @return $this
@@ -71,6 +109,16 @@ class TestResponse extends Response
         Assert::assertSame($this->options['query'], $query);
 
         return $this;
+    }
+
+    /**
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     *
+     * @return $this
+     */
+    public function assertEmptyQuery()
+    {
+        return $this->assertQuery([]);
     }
 
     /**

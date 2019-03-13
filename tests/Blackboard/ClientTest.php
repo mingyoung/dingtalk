@@ -16,8 +16,10 @@ use EasyDingTalk\Tests\TestCase;
 
 class ClientTest extends TestCase
 {
-    public function testListByUserId()
+    /** @test */
+    public function list()
     {
-        $this->make(Client::class);
+        $this->make(Client::class)->list('mingyoung')
+            ->assertUri('topapi/blackboard/listtopten')->assertPostJson(['userid' => 'mingyoung']);
     }
 }

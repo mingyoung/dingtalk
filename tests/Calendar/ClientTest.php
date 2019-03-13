@@ -16,8 +16,10 @@ use EasyDingTalk\Tests\TestCase;
 
 class ClientTest extends TestCase
 {
-    public function testCreate()
+    /** @test */
+    public function create()
     {
-        $this->make(Client::class);
+        $this->make(Client::class)->create($expected = ['foo' => 'bar'])
+            ->assertUri('topapi/calendar/create')->assertPostJson($expected);
     }
 }

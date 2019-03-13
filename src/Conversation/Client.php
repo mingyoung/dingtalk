@@ -12,6 +12,7 @@
 namespace EasyDingTalk\Conversation;
 
 use EasyDingTalk\Kernel\BaseClient;
+use function EasyDingTalk\tap;
 
 class Client extends BaseClient
 {
@@ -24,9 +25,9 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function send($sender, $cid, $message)
+    public function sendGeneralMessage($sender, $cid, $message)
     {
-        return $this->app['client']->postJson('message/send_to_conversation', [
+        return $this->client->postJson('message/send_to_conversation', [
             'sender' => $sender, 'cid' => $cid, 'msg' => $message,
         ]);
     }
@@ -38,46 +39,63 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function sendViaCorporation($params)
+    public function sendCorporationMessage($params)
     {
-        return $this->app['client']->postJson('topapi/message/corpconversation/asyncsend_v2', $params);
+        return $this->client->postJson('topapi/message/corpconversation/asyncsend_v2', $params);
     }
 
     /**
-     * 查询工作通知消息的发送进度
-     *
-     * @param int $agentId
      * @param int $taskId
      *
      * @return mixed
      */
-    public function getProgress($agentId, $taskId)
+    public function corporationMessage($taskId)
     {
-        return $this->app['client']->postJson('topapi/message/corpconversation/getsendprogress', [
-            'agent_id' => $agentId, 'task_id' => $taskId,
-        ]);
-    }
+        $client = new class($this->app) extends BaseClient {
+            /**
+             * 任务 ID
+             *
+             * @var int
+             */
+            protected $taskId;
 
-    /**
-     * 查询工作通知消息的发送结果
-     *
-     * @param int $agentId
-     * @param int $taskId
-     *
-     * @return mixed
-     */
-    public function getResult($agentId, $taskId)
-    {
-        return $this->app['client']->postJson('topapi/message/corpconversation/getsendresult', [
-            'agent_id' => $agentId, 'task_id' => $taskId,
-        ]);
-    }
+            /**
+             * @param int
+             */
+            public function setTaskId($taskId)
+            {
+                $this->taskId = $taskId;
 
-    /**
-     * @return \EasyDingTalk\Conversation\SendViaCorporation
-     */
-    public function viaCorporation()
-    {
-        return new SendViaCorporation($this);
+                return $this;
+            }
+
+            /**
+             * 查询工作通知消息的发送进度
+             *
+             * @return mixed
+             */
+            public function progress()
+            {
+                return $this->client->postJson('topapi/message/corpconversation/getsendprogress', [
+                    'agent_id' => $this->app['config']['agent_id'], 'task_id' => $this->taskId,
+                ]);
+            }
+
+            /**
+             * 查询工作通知消息的发送结果
+             *
+             * @return mixed
+             */
+            public function result()
+            {
+                return $this->client->postJson('topapi/message/corpconversation/getsendresult', [
+                    'agent_id' => $this->app['config']['agent_id'], 'task_id' => $this->taskId,
+                ]);
+            }
+        };
+
+        return tap($client, function ($client) use ($taskId) {
+            $client->setTaskId($taskId);
+        });
     }
 }

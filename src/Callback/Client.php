@@ -62,7 +62,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function failedResult()
+    public function failed()
     {
         return $this->client->get('call_back/get_call_back_failed_result');
     }

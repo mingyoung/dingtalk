@@ -25,7 +25,7 @@ class Client extends BaseClient
      */
     public function send($chatId, $message)
     {
-        return $this->app['client']->postJson('chat/send', [
+        return $this->client->postJson('chat/send', [
             'chatid' => $chatId, 'msg' => $message,
         ]);
     }
@@ -39,9 +39,9 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function readUsers($messageId, $cursor, $size)
+    public function result($messageId, $cursor, $size)
     {
-        return $this->app['client']->get('chat/getReadList', [
+        return $this->client->get('chat/getReadList', [
             'messageId' => $messageId, 'cursor' => $cursor, 'size' => $size,
         ]);
     }
@@ -55,7 +55,7 @@ class Client extends BaseClient
      */
     public function create($params)
     {
-        return $this->app['client']->postJson('chat/create', $params);
+        return $this->client->postJson('chat/create', $params);
     }
 
     /**
@@ -68,7 +68,7 @@ class Client extends BaseClient
      */
     public function update($chatId, $params)
     {
-        return $this->app['client']->postJson('chat/update', ['chatid' => $chatId] + $params);
+        return $this->client->postJson('chat/update', ['chatid' => $chatId] + $params);
     }
 
     /**
@@ -80,6 +80,6 @@ class Client extends BaseClient
      */
     public function get($chatId)
     {
-        return $this->app['client']->get('chat/get', ['chatid' => $chatId]);
+        return $this->client->get('chat/get', ['chatid' => $chatId]);
     }
 }

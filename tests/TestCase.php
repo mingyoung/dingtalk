@@ -46,7 +46,7 @@ class TestCase extends BaseTestCase
      */
     protected function newApplication(array $config = [], array $overrides = [])
     {
-        return new Application(array_merge(['appkey' => 'mock-appkey', 'appsecret' => 'mock-appsecret'], $config), $overrides);
+        return new Application(array_merge(['appkey' => 'mock-appkey', 'appsecret' => 'mock-appsecret', 'agent_id' => 'mock-agent'], $config), $overrides);
     }
 
     protected function tearDown()

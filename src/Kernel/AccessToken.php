@@ -68,7 +68,7 @@ class AccessToken
      */
     public function refresh()
     {
-        $response = $this->client->requestRaw('gettoken', 'GET', ['query' => [
+        $response = $this->app['client']->requestRaw('gettoken', 'GET', ['query' => [
             'appkey' => $this->app['config']->get('app_key'),
             'appsecret' => $this->app['config']->get('app_secret'),
         ]]);

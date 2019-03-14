@@ -38,8 +38,9 @@ class Client extends BaseClient
      */
     public function list($id = null, $isFetchChild = false, $lang = null)
     {
-        return $this->client->get('department/list',
-            compact('id', 'lang') + ['fetch_child' => $isFetchChild]);
+        return $this->client->get('department/list', [
+            'id' => $id, 'lang' => $lang, 'fetch_child' => $isFetchChild,
+        ]);
     }
 
     /**

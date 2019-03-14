@@ -75,11 +75,16 @@ class Credential
      */
     protected function credentials(): array
     {
+        if ($this->app['config']->has('app_key')) {
+            return [
+                'appkey' => $this->app['config']->get('app_key'),
+                'appsecret' => $this->app['config']->get('app_secret'),
+            ];
+        }
+
         return [
             'corpid' => $this->app['config']->get('corp_id'),
             'corpsecret' => $this->app['config']->get('corp_secret'),
-            'appkey' => $this->app['config']->get('app_key'),
-            'appsecret' => $this->app['config']->get('app_secret'),
         ];
     }
 

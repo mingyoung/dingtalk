@@ -11,6 +11,7 @@
 
 namespace EasyDingTalk\Kernel;
 
+use EasyDingTalk\Kernel\Http\Client;
 use function EasyDingTalk\tap;
 use Overtrue\Http\Traits\ResponseCastable;
 
@@ -68,7 +69,7 @@ class AccessToken
      */
     public function refresh()
     {
-        $response = $this->app['client']->requestRaw('gettoken', 'GET', ['query' => [
+        $response = (new Client($this->app))->requestRaw('gettoken', 'GET', ['query' => [
             'appkey' => $this->app['config']->get('app_key'),
             'appsecret' => $this->app['config']->get('app_secret'),
         ]]);

@@ -28,6 +28,7 @@ class ApplicationTest extends TestCase
             'report' => \EasyDingTalk\Report\Client::class,
             'health' => \EasyDingTalk\Health\Client::class,
             'contact' => \EasyDingTalk\Contact\Client::class,
+            'callback' => \EasyDingTalk\Callback\Client::class,
             'calendar' => \EasyDingTalk\Calendar\Client::class,
             'schedule' => \EasyDingTalk\Schedule\Client::class,
             'microapp' => \EasyDingTalk\Microapp\Client::class,
@@ -37,6 +38,7 @@ class ApplicationTest extends TestCase
             'department' => \EasyDingTalk\Department\Client::class,
             'access_token' => \EasyDingTalk\Kernel\AccessToken::class,
             'conversation' => \EasyDingTalk\Conversation\Client::class,
+            'request' => \Symfony\Component\HttpFoundation\Request::class,
         ];
 
         $this->assertCount(count($services), $app->keys());

@@ -9,12 +9,13 @@
  * with this source code in the file LICENSE.
  */
 
-namespace EasyDingTalk\Kernel\Http;
+namespace EasyDingTalk\Kernel\Providers;
 
+use EasyDingTalk\Kernel\Http\Client;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
-class ServiceProvider implements ServiceProviderInterface
+class ClientServiceProvider implements ServiceProviderInterface
 {
     /**
      * Registers services on the given container.

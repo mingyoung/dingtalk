@@ -28,16 +28,18 @@ class Application extends Container
         User\ServiceProvider::class,
         Media\ServiceProvider::class,
         Health\ServiceProvider::class,
-        Kernel\ServiceProvider::class,
         Report\ServiceProvider::class,
         Contact\ServiceProvider::class,
         Calendar\ServiceProvider::class,
+        Callback\ServiceProvider::class,
         Microapp\ServiceProvider::class,
         Schedule\ServiceProvider::class,
         Blackboard\ServiceProvider::class,
         Department\ServiceProvider::class,
-        Kernel\Http\ServiceProvider::class,
         Conversation\ServiceProvider::class,
+        Kernel\Providers\ClientServiceProvider::class,
+        Kernel\Providers\RequestServiceProvider::class,
+        Kernel\Providers\AccessTokenServiceProvider::class,
     ];
 
     /**

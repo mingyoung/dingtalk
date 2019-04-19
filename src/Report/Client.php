@@ -88,4 +88,20 @@ class Client extends BaseClient
             ? $this->httpPostJson('topapi/report/getunreadcount', $params)
             : $this->httpGetMethod('dingtalk.oapi.report.getunreadcount', $params);
     }
+    
+    /**
+     * 获取日志统计数据
+     *
+     * @param string $reportId
+     *
+     * @return array
+     */
+    public function statistics(string $reportId)
+    {
+        $params = ['report_id' => $reportId];
+        
+        return Application::$useOApi
+            ? $this->httpPostJson('topapi/report/statistics', $params)
+            : $this->httpGetMethod('dingtalk.oapi.report.statistics', $params);
+    }
 }

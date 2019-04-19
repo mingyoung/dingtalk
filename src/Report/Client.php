@@ -33,7 +33,7 @@ class Client extends BaseClient
      *
      * @return array
      */
-    public function list(int $startTime, int $endTime, $cursor = 0, $size = 10, $templateName = null, $userId = null)
+    public function list($startTime, $endTime, $cursor = 0, $size = 10, $templateName = null, $userId = null)
     {
         $params = [
             'start_time' => $startTime,

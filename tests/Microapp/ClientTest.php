@@ -31,9 +31,9 @@ class ClientTest extends TestCase
     }
 
     /** @test */
-    public function visibleScopes()
+    public function getVisibility()
     {
-        $this->make(Client::class)->visibleScopes('123')
+        $this->make(Client::class)->getVisibility('123')
             ->assertUri('microapp/visible_scopes')->assertPostJson(['agentId' => '123']);
     }
 

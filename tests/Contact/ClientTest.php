@@ -17,9 +17,9 @@ use EasyDingTalk\Tests\TestCase;
 class ClientTest extends TestCase
 {
     /** @test */
-    public function tags()
+    public function labels()
     {
-        $this->make(Client::class)->tags(0, 20)
+        $this->make(Client::class)->labels(0, 20)
             ->assertUri('topapi/extcontact/listlabelgroups')->assertPostJson(['offset' => 0, 'size' => 20]);
     }
 

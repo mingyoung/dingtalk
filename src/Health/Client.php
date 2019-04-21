@@ -35,7 +35,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function user($id, $dates)
+    public function byUser($id, $dates)
     {
         return $this->client->postJson('topapi/health/stepinfo/list', ['type' => 0, 'object_id' => $id, 'stat_dates' => $dates]);
     }
@@ -48,7 +48,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function department($id, $dates)
+    public function byDepartment($id, $dates)
     {
         return $this->client->postJson('topapi/health/stepinfo/list', ['type' => 1, 'object_id' => $id, 'stat_dates' => $dates]);
     }
@@ -61,7 +61,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function users(array $userIds, $date)
+    public function byUsers(array $userIds, $date)
     {
         $userIds = implode(',', $userIds);
 

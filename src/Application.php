@@ -38,7 +38,9 @@ class Application extends Container
         Department\ServiceProvider::class,
         Conversation\ServiceProvider::class,
         Kernel\Providers\ClientServiceProvider::class,
+        Kernel\Providers\ServerServiceProvider::class,
         Kernel\Providers\RequestServiceProvider::class,
+        Kernel\Providers\EncryptionServiceProvider::class,
         Kernel\Providers\AccessTokenServiceProvider::class,
     ];
 

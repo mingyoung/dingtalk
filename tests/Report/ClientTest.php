@@ -38,7 +38,7 @@ class ClientTest extends TestCase
             'size' => 50,
         ];
 
-        $this->make(Client::class)->templates($expected)
+        $this->make(Client::class)->templates('mingyoung', 100, 50)
             ->assertUri('topapi/report/template/listbyuserid')->assertPostJson($expected);
     }
 

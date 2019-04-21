@@ -46,7 +46,7 @@ class Client extends BaseClient
      *
      * @return mixed
      */
-    public function visibleScopes($agentId)
+    public function getVisibility($agentId)
     {
         return $this->client->postJson('microapp/visible_scopes', compact('agentId'));
     }

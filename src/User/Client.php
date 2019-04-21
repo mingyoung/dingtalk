@@ -99,7 +99,7 @@ class Client extends BaseClient
     }
 
     /**
-     * 根据unionid获取userid
+     * 根据 Unionid 获取 Userid
      *
      * @param string $unionid
      *
@@ -189,5 +189,27 @@ class Client extends BaseClient
         $roleIds = is_array($roleIds) ? implode(',', $roleIds) : $roleIds;
 
         return $this->client->postJson('topapi/role/removerolesforemps', compact('userIds', 'roleIds'));
+    }
+
+    /**
+     * 获取企业员工人数
+     *
+     * @param int $onlyActive
+     *
+     * @return mixed
+     */
+    public function getCount($onlyActive = 0)
+    {
+        return $this->client->get('user/get_org_user_count', compact('onlyActive'));
+    }
+
+    /**
+     * 获取企业已激活的员工人数
+     *
+     * @return mixed
+     */
+    public function getActivatedCount()
+    {
+        return $this->getCount(1);
     }
 }

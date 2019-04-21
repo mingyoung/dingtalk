@@ -52,20 +52,6 @@ class ClientTest extends TestCase
     }
 
     /** @test */
-    public function getUserCount()
-    {
-        $this->make(Client::class)->getUserCount()
-            ->assertUri('user/get_org_user_count')->assertQuery(['onlyActive' => 0]);
-    }
-
-    /** @test */
-    public function getActivatedUserCount()
-    {
-        $this->make(Client::class)->getActivatedUserCount()
-            ->assertUri('user/get_org_user_count')->assertQuery(['onlyActive' => 1]);
-    }
-
-    /** @test */
     public function create()
     {
         $this->make(Client::class)->create(['name' => 'EasyDingTalk'])

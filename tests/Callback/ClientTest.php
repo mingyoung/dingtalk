@@ -20,7 +20,7 @@ class ClientTest extends TestCase
     public function register()
     {
         $this->make(Client::class)->register($params = ['call_back_tag' => ['foo', 'bar']])
-            ->assertPostUri('call_back/register_call_back')->assertPostJson($params);
+            ->assertPostUri('call_back/register_call_back')->assertPostJson(array_merge($params, ['token' => 'test-token', 'aes_key' => 'test-aes-key']));
     }
 
     /** @test */

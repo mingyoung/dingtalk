@@ -26,6 +26,8 @@ class TestCase extends BaseTestCase
     protected function make($client)
     {
         $app = $this->newApplication([
+            'token' => 'test-token',
+            'aes_key' => 'test-aes-key',
             'http' => ['response_type' => 'raw'],
         ]);
 

@@ -30,13 +30,17 @@ class Client extends BaseClient
     /**
      * 获取用户可见的日志模板
      *
-     * @param array $params
+     * @param string|null $userId
+     * @param int         $offset
+     * @param int         $size
      *
      * @return mixed
      */
-    public function templates($params)
+    public function templates($userId = null, $offset = 0, $size = 100)
     {
-        return $this->client->postJson('topapi/report/template/listbyuserid', $params);
+        return $this->client->postJson('topapi/report/template/listbyuserid', [
+            'userid' => $userId, 'offset' => $offset, 'size' => $size,
+        ]);
     }
 
     /**

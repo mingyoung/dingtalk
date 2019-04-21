@@ -24,6 +24,9 @@ class Client extends BaseClient
      */
     public function register($params)
     {
+        $params['token'] = $this->app['config']->get('token');
+        $params['aes_key'] = $this->app['config']->get('aes_key');
+
         return $this->client->postJson('call_back/register_call_back', $params);
     }
 

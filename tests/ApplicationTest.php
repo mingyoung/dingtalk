@@ -39,6 +39,8 @@ class ApplicationTest extends TestCase
             'access_token' => \EasyDingTalk\Kernel\AccessToken::class,
             'conversation' => \EasyDingTalk\Conversation\Client::class,
             'request' => \Symfony\Component\HttpFoundation\Request::class,
+            'encryptor' => \EasyDingTalk\Kernel\Encryption\Encryptor::class,
+            'server' => \EasyDingTalk\Kernel\Server::class,
         ];
 
         $this->assertCount(count($services), $app->keys());

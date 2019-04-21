@@ -25,25 +25,25 @@ class ClientTest extends TestCase
     }
 
     /** @test */
-    public function user()
+    public function byUser()
     {
-        $this->make(Client::class)->user('mingyoung', '20180101,20180102')
+        $this->make(Client::class)->byUser('mingyoung', '20180101,20180102')
             ->assertPostUri('topapi/health/stepinfo/list')
             ->assertPostJson(['type' => 0, 'object_id' => 'mingyoung', 'stat_dates' => '20180101,20180102']);
     }
 
     /** @test */
-    public function department()
+    public function byDepartment()
     {
-        $this->make(Client::class)->department('mingyoung', '20180101,20180102')
+        $this->make(Client::class)->byDepartment('mingyoung', '20180101,20180102')
             ->assertPostUri('topapi/health/stepinfo/list')
             ->assertPostJson(['type' => 1, 'object_id' => 'mingyoung', 'stat_dates' => '20180101,20180102']);
     }
 
     /** @test */
-    public function users()
+    public function byUsers()
     {
-        $this->make(Client::class)->users(['mingyoung', 'cc'], '20180101')
+        $this->make(Client::class)->byUsers(['mingyoung', 'cc'], '20180101')
             ->assertPostUri('topapi/health/stepinfo/listbyuserid')
             ->assertPostJson(['userids' => 'mingyoung,cc', 'stat_date' => '20180101']);
     }

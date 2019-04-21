@@ -71,9 +71,9 @@ class Encryptor
 
         return json_encode([
             'msg_signature' => $this->signature($this->token, $nonce, $timestamp, $result),
-            'encrypt' => $result,
             'timeStamp' => $timestamp,
             'nonce' => $nonce,
+            'encrypt' => $result,
         ]);
     }
 

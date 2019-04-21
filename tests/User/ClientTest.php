@@ -120,4 +120,18 @@ class ClientTest extends TestCase
         $this->make(Client::class)->removeRoles(['user1', 'user2'], ['role1', 'role2'])
             ->assertUri('topapi/role/removerolesforemps')->assertPostJson(['userIds' => 'user1,user2', 'roleIds' => 'role1,role2']);
     }
+
+    /** @test */
+    public function getUserCount()
+    {
+        $this->make(Client::class)->getCount()
+            ->assertUri('user/get_org_user_count')->assertQuery(['onlyActive' => 0]);
+    }
+
+    /** @test */
+    public function getActivatedCount()
+    {
+        $this->make(Client::class)->getActivatedCount()
+            ->assertUri('user/get_org_user_count')->assertQuery(['onlyActive' => 1]);
+    }
 }

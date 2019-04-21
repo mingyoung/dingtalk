@@ -94,7 +94,7 @@ class Encryptor
         }
 
         $decrypted = openssl_decrypt(
-            base64_decode($data, true), 'AES-256-CBC', $this->aesKey, OPENSSL_NO_PADDING, substr($this->aesKey, 0, 16),
+            base64_decode($data, true), 'AES-256-CBC', $this->aesKey, OPENSSL_NO_PADDING, substr($this->aesKey, 0, 16)
         );
 
         $result = $this->pkcs7Unpad($decrypted);

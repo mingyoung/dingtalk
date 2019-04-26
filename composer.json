@@ -23,11 +23,6 @@
         "mockery/mockery": "^1.0",
         "phpunit/phpunit": "^6.5 || ^7.0"
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0-dev"
-        }
-    },
     "autoload": {
         "psr-4": {
             "EasyDingTalk\\": "src/"

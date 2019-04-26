@@ -2,7 +2,11 @@
     "name": "mingyoung/dingtalk",
     "description": "钉钉 SDK",
     "keywords": [
-        "dingtalk"
+        "dingtalk",
+        "dingding",
+        "sdk",
+        "钉钉"
+
     ],
     "license": "MIT",
     "authors": [

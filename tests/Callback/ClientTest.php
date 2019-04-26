@@ -34,7 +34,7 @@ class ClientTest extends TestCase
     public function update()
     {
         $this->make(Client::class)->update($params = ['call_back_tag' => ['foo', 'bar']])
-            ->assertPostUri('call_back/update_call_back')->assertPostJson($params);
+            ->assertPostUri('call_back/update_call_back')->assertPostJson(array_merge($params, ['token' => 'test-token', 'aes_key' => 'test-aes-key']));
     }
 
     /** @test */

@@ -15,6 +15,8 @@ return PhpCsFixer\Config::create()
         'phpdoc_summary' => false,
         'header_comment' => ['header' => $header],
         'ordered_imports' => true,
+        'phpdoc_no_empty_return' => false,
+        'no_empty_comment' => false,
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()

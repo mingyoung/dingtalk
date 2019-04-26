@@ -21,10 +21,12 @@ class ApplicationTest extends TestCase
         $app = new Application();
 
         $services = [
+            'logger' => \Monolog\Logger::class,
             'chat' => \EasyDingTalk\Chat\Client::class,
             'user' => \EasyDingTalk\User\Client::class,
             'role' => \EasyDingTalk\Role\Client::class,
             'media' => \EasyDingTalk\Media\Client::class,
+            'server' => \EasyDingTalk\Kernel\Server::class,
             'report' => \EasyDingTalk\Report\Client::class,
             'health' => \EasyDingTalk\Health\Client::class,
             'contact' => \EasyDingTalk\Contact\Client::class,
@@ -40,7 +42,6 @@ class ApplicationTest extends TestCase
             'conversation' => \EasyDingTalk\Conversation\Client::class,
             'request' => \Symfony\Component\HttpFoundation\Request::class,
             'encryptor' => \EasyDingTalk\Kernel\Encryption\Encryptor::class,
-            'server' => \EasyDingTalk\Kernel\Server::class,
         ];
 
         $this->assertCount(count($services), $app->keys());

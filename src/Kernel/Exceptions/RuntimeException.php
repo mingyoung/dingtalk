@@ -11,9 +11,7 @@
 
 namespace EasyDingTalk\Kernel\Exceptions;
 
-use Exception as BaseException;
-
-class Exception extends BaseException
+class RuntimeException extends Exception
 {
     //
 }

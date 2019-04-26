@@ -10,4 +10,33 @@
     <a href="https://packagist.org/packages/mingyoung/dingtalk"><img src="https://poser.pugx.org/mingyoung/dingtalk/license.svg" alt="License"></a>
 </p>
 
-> 当前分支为 2.0 版本，正在开发中，请使用 [1.0](https://github.com/mingyoung/dingtalk/tree/1.0) 版本
+## 环境要求
+
+- PHP 7.0+
+- [Composer](https://getcomposer.org/)
+
+## 安装
+
+```bash
+composer require mingyoung/dingtalk:^2.0
+```
+
+## 使用
+
+```php
+use EasyDingTalk\Application;
+
+$config = [
+    'corp_id' => 'dingd3ir8195906jfo93',
+
+    'app_key' => 'dingwu33fo1fjc0fszad',
+    'app_secret' => 'RsuMFgEIY3jg5UMidkvwpzEobWjf9Fcu3oLqLyCUIgzULm54WcV7j9fi3fJlUshk',
+
+    'token' => 'uhl3CZbtsmf93bFPanmMenhWwrqbSwPc',
+    'aes_key' => 'qZEOmHU2qYYk6n6vqLfi3FAhcp9bGA2kgbfnsXDrGgN',
+];
+
+$app = new Application($config);
+```
+
+详细文档 [https://docs.easydingtalk.org](https://docs.easydingtalk.org)

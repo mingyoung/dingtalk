@@ -98,7 +98,7 @@ class Server
         }
 
         $result = $this->app['encryptor']->decrypt(
-            $payload['encrypt'], $this->app['request'], $this->app['request']->get('signature'), $this->app['request']->get('nonce'), $this->app['request']->get('timestamp')
+            $payload['encrypt'], $this->app['request']->get('signature'), $this->app['request']->get('nonce'), $this->app['request']->get('timestamp')
         );
 
         return json_decode($result, true);

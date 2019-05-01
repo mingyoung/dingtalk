@@ -37,6 +37,7 @@ class ApplicationTest extends TestCase
             'client' => \EasyDingTalk\Kernel\Http\Client::class,
             'config' => \Overtrue\Http\Support\Collection::class,
             'blackboard' => \EasyDingTalk\Blackboard\Client::class,
+            'attendance' => \EasyDingTalk\Attendance\Client::class,
             'department' => \EasyDingTalk\Department\Client::class,
             'access_token' => \EasyDingTalk\Kernel\AccessToken::class,
             'conversation' => \EasyDingTalk\Conversation\Client::class,

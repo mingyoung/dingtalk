@@ -35,6 +35,7 @@ class Application extends Container
         Microapp\ServiceProvider::class,
         Schedule\ServiceProvider::class,
         Blackboard\ServiceProvider::class,
+        Attendance\ServiceProvider::class,
         Department\ServiceProvider::class,
         Conversation\ServiceProvider::class,
         Kernel\Providers\ClientServiceProvider::class,

@@ -29,6 +29,7 @@ class ApplicationTest extends TestCase
             'server' => \EasyDingTalk\Kernel\Server::class,
             'report' => \EasyDingTalk\Report\Client::class,
             'health' => \EasyDingTalk\Health\Client::class,
+            'checkin' => \EasyDingTalk\Checkin\Client::class,
             'contact' => \EasyDingTalk\Contact\Client::class,
             'callback' => \EasyDingTalk\Callback\Client::class,
             'calendar' => \EasyDingTalk\Calendar\Client::class,

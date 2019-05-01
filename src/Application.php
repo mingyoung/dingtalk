@@ -29,6 +29,7 @@ class Application extends Container
         Media\ServiceProvider::class,
         Health\ServiceProvider::class,
         Report\ServiceProvider::class,
+        Checkin\ServiceProvider::class,
         Contact\ServiceProvider::class,
         Calendar\ServiceProvider::class,
         Callback\ServiceProvider::class,

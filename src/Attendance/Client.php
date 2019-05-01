@@ -53,7 +53,7 @@ class Client extends BaseClient
      */
     public function userGroup($userId)
     {
-        return $this->client->postJson('topapi/attendance/getusergroup');
+        return $this->client->postJson('topapi/attendance/getusergroup', ['userid' => $userId]);
     }
 
     /**

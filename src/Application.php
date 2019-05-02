@@ -23,6 +23,7 @@ class Application extends Container
      * @var array
      */
     protected $providers = [
+        Auth\ServiceProvider::class,
         Chat\ServiceProvider::class,
         Role\ServiceProvider::class,
         User\ServiceProvider::class,

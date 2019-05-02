@@ -31,9 +31,6 @@ $config = [
 
     'app_key' => 'dingwu33fo1fjc0fszad',
     'app_secret' => 'RsuMFgEIY3jg5UMidkvwpzEobWjf9Fcu3oLqLyCUIgzULm54WcV7j9fi3fJlUshk',
-
-    'token' => 'uhl3CZbtsmf93bFPanmMenhWwrqbSwPc',
-    'aes_key' => 'qZEOmHU2qYYk6n6vqLfi3FAhcp9bGA2kgbfnsXDrGgN',
 ];
 
 $app = new Application($config);

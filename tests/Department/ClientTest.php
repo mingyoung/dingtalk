@@ -27,7 +27,7 @@ class ClientTest extends TestCase
     public function list()
     {
         $this->make(Client::class)->list()
-            ->assertUri('department/list')->assertQuery(['id' => null, 'lang' => null, 'fetch_child' => false]);
+            ->assertUri('department/list')->assertQuery(['id' => null, 'lang' => null, 'fetch_child' => 'false']);
     }
 
     /** @test */

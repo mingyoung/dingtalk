@@ -33,6 +33,7 @@ class ApplicationTest extends TestCase
             'checkin' => \EasyDingTalk\Checkin\Client::class,
             'contact' => \EasyDingTalk\Contact\Client::class,
             'oauth' => \EasyDingTalk\Auth\OAuthClient::class,
+            'process' => \EasyDingTalk\Process\Client::class,
             'callback' => \EasyDingTalk\Callback\Client::class,
             'calendar' => \EasyDingTalk\Calendar\Client::class,
             'schedule' => \EasyDingTalk\Schedule\Client::class,

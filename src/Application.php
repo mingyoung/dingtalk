@@ -32,6 +32,7 @@ class Application extends Container
         Report\ServiceProvider::class,
         Checkin\ServiceProvider::class,
         Contact\ServiceProvider::class,
+        Process\ServiceProvider::class,
         Calendar\ServiceProvider::class,
         Callback\ServiceProvider::class,
         Microapp\ServiceProvider::class,

@@ -134,4 +134,16 @@ class TestResponse extends Response
 
         return $this;
     }
+
+    /**
+     * @param array $params
+     *
+     * @return $this
+     */
+    public function assertPostFormParams($params)
+    {
+        Assert::assertSame($this->options['form_params'], $params);
+
+        return $this;
+    }
 }

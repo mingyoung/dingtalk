@@ -17,6 +17,21 @@ use function EasyDingTalk\tap;
 trait HasStateParameter
 {
     /**
+     * @var bool
+     */
+    protected $stateless = false;
+
+    /**
+     * @return $this
+     */
+    public function stateless()
+    {
+        $this->stateless = true;
+
+        return $this;
+    }
+
+    /**
      * Generate state.
      *
      * @return string
@@ -35,6 +50,10 @@ trait HasStateParameter
      */
     protected function hasValidState($state)
     {
+        if ($this->stateless) {
+            return true;
+        }
+
         return !is_null($state) && ($state === $this->app['request']->getSession()->get('state'));
     }
 }

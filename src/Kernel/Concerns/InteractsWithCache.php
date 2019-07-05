@@ -30,7 +30,7 @@ trait InteractsWithCache
             return $this->cache;
         }
 
-        if (($this->app['cache'] ?? null) instanceof CacheInterface) {
+        if ($this->app->offsetExists('cache') && ($this->app['cache'] instanceof CacheInterface)) {
             return $this->cache = $this->app['cache'];
         }
 

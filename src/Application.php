@@ -16,6 +16,26 @@ use Pimple\Container;
 
 /**
  * @property \EasyDingTalk\Kernel\AccessToken $access_token
+ * @property Auth\SsoClient $sso
+ * @property Auth\OAuthClient $oauth
+ * @property Chat\Client $chat
+ * @property Role\Client $role
+ * @property User\Client $user
+ * @property Media\Client $media
+ * @property Health\Client $health
+ * @property Report\Client $report
+ * @property Checkin\Client $checkin
+ * @property Contact\Client $contact
+ * @property Process\Client $process
+ * @property Calendar\Client $calendar
+ * @property Callback\Client $callback
+ * @property Microapp\Client $microapp
+ * @property Schedule\Client $schedule
+ * @property Blackboard\Client $blackboard
+ * @property Attendance\Client $attendance
+ * @property Department\Client $department
+ * @property Conversation\Client $conversation
+ * @property Kernel\Server $server
  */
 class Application extends Container
 {

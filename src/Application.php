@@ -15,27 +15,31 @@ use Overtrue\Http\Support\Collection;
 use Pimple\Container;
 
 /**
+ * @property \EasyDingTalk\Auth\SsoClient $sso
+ * @property \EasyDingTalk\Auth\OAuthClient $oauth
+ * @property \EasyDingTalk\Chat\Client $chat
+ * @property \EasyDingTalk\Role\Client $role
+ * @property \EasyDingTalk\User\Client $user
+ * @property \EasyDingTalk\Media\Client $media
+ * @property \EasyDingTalk\Health\Client $health
+ * @property \EasyDingTalk\Report\Client $report
+ * @property \EasyDingTalk\Checkin\Client $checkin
+ * @property \EasyDingTalk\Contact\Client $contact
+ * @property \EasyDingTalk\Process\Client $process
+ * @property \EasyDingTalk\Calendar\Client $calendar
+ * @property \EasyDingTalk\Callback\Client $callback
+ * @property \EasyDingTalk\Microapp\Client $microapp
+ * @property \EasyDingTalk\Schedule\Client $schedule
+ * @property \EasyDingTalk\Blackboard\Client $blackboard
+ * @property \EasyDingTalk\Attendance\Client $attendance
+ * @property \EasyDingTalk\Department\Client $department
+ * @property \EasyDingTalk\Conversation\Client $conversation
+ * @property \EasyDingTalk\Kernel\Http\Client $client
+ * @property \Monolog\Logger $logger
+ * @property \EasyDingTalk\Kernel\Server $server
+ * @property \Symfony\Component\HttpFoundation\Request $request
+ * @property \EasyDingTalk\Kernel\Encryption\Encryptor $encryptor
  * @property \EasyDingTalk\Kernel\AccessToken $access_token
- * @property Auth\SsoClient $sso
- * @property Auth\OAuthClient $oauth
- * @property Chat\Client $chat
- * @property Role\Client $role
- * @property User\Client $user
- * @property Media\Client $media
- * @property Health\Client $health
- * @property Report\Client $report
- * @property Checkin\Client $checkin
- * @property Contact\Client $contact
- * @property Process\Client $process
- * @property Calendar\Client $calendar
- * @property Callback\Client $callback
- * @property Microapp\Client $microapp
- * @property Schedule\Client $schedule
- * @property Blackboard\Client $blackboard
- * @property Attendance\Client $attendance
- * @property Department\Client $department
- * @property Conversation\Client $conversation
- * @property Kernel\Server $server
  */
 class Application extends Container
 {

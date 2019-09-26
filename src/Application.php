@@ -52,6 +52,7 @@ class Application extends Container
         Role\ServiceProvider::class,
         User\ServiceProvider::class,
         Media\ServiceProvider::class,
+        H5app\ServiceProvider::class,
         Health\ServiceProvider::class,
         Report\ServiceProvider::class,
         Checkin\ServiceProvider::class,

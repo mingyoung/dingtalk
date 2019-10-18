@@ -48,4 +48,38 @@ class ClientTest extends TestCase
         $this->make(Client::class)->unreadCount('mingyoung')
             ->assertUri('topapi/report/getunreadcount')->assertPostJson(['userid' => 'mingyoung']);
     }
+
+    /** @test */
+    public function statistics()
+    {
+        $this->make(Client::class)->statistics('xxxxxxx')
+            ->assertUri('topapi/report/statistics')->assertPostJson(['report_id' => 'xxxxxxx']);
+    }
+
+    /** @test */
+    public function statisticsByType()
+    {
+        $this->make(Client::class)->unreadCount('xxxxxxx')
+            ->assertUri('topapi/report/statistics/listbytype')->assertPostJson([
+                'report_id' => 'xxxxxxx', 'type' => 0, 'offset' => 0, 'size' => 100,
+            ]);
+    }
+
+    /** @test */
+    public function getReceivers()
+    {
+        $this->make(Client::class)->getReceivers('xxxxxxx')
+            ->assertUri('topapi/report/receiver/list')->assertPostJson([
+                'report_id' => 'xxxxxxx', 'offset' => 0, 'size' => 100,
+            ]);
+    }
+
+    /** @test */
+    public function getComments()
+    {
+        $this->make(Client::class)->getComments('mingyoung')
+            ->assertUri('topapi/report/comment/list')->assertPostJson([
+                'report_id' => 'xxxxxxx', 'offset' => 0, 'size' => 100,
+            ]);
+    }
 }

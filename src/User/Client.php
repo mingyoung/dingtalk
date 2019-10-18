@@ -18,7 +18,7 @@ class Client extends BaseClient
     /**
      * 获取用户详情
      *
-     * @param string      $userid
+     * @param string $userid
      * @param string|null $lang
      *
      * @return mixed
@@ -43,9 +43,9 @@ class Client extends BaseClient
     /**
      * 获取部门用户
      *
-     * @param int    $departmentId
-     * @param int    $offset
-     * @param int    $size
+     * @param int $departmentId
+     * @param int $offset
+     * @param int $size
      * @param string $order
      * @param string $lang
      *
@@ -61,9 +61,9 @@ class Client extends BaseClient
     /**
      * 获取部门用户详情
      *
-     * @param int    $departmentId
-     * @param int    $offset
-     * @param int    $size
+     * @param int $departmentId
+     * @param int $offset
+     * @param int $size
      * @param string $order
      * @param string $lang
      *
@@ -126,7 +126,7 @@ class Client extends BaseClient
      * 更新用户
      *
      * @param string $userid
-     * @param array  $params
+     * @param array $params
      *
      * @return mixed
      */
@@ -211,5 +211,33 @@ class Client extends BaseClient
     public function getActivatedCount()
     {
         return $this->getCount(1);
+    }
+
+    /**
+     * 根据员工手机号获取 Userid
+     *
+     * @param string $phone
+     *
+     * @return mixed
+     */
+    public function getUserIdByPhone($phone = '')
+    {
+        return $this->client->get('user/get_by_mobile', compact('phone'));
+    }
+
+    /**
+     * 未登录钉钉的员工列表
+     *
+     * @param string $query_date
+     * @param int $offset
+     * @param int $size
+     *
+     * @return mixed
+     */
+    public function getInactiveUsers($query_date, $offset, $size)
+    {
+        return $this->client->postJson('topapi/inactive/user/get', [
+            'query_date' => $query_date, 'offset' => $offset, 'size' => $size
+        ]);
     }
 }

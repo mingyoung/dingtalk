@@ -134,4 +134,18 @@ class ClientTest extends TestCase
         $this->make(Client::class)->getActivatedCount()
             ->assertUri('user/get_org_user_count')->assertQuery(['onlyActive' => 1]);
     }
+
+    /** @test */
+    public function getUserIdByPhone()
+    {
+        $this->make(Client::class)->getUserIdByPhone()
+            ->assertUri('user/get_by_mobile')->assertQuery(['phone' => '18888888888']);
+    }
+
+    /** @test */
+    public function getInactiveUsers()
+    {
+        $this->make(Client::class)->getInactiveUsers()
+            ->assertUri('topapi/inactive/user/get')->assertQuery(['query_date' => '20190808', 'offset' => 0, 'size' => 100]);
+    }
 }

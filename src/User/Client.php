@@ -216,13 +216,13 @@ class Client extends BaseClient
     /**
      * 根据员工手机号获取 Userid
      *
-     * @param string $phone
+     * @param string $mobile
      *
      * @return mixed
      */
-    public function getUserIdByPhone($phone = '')
+    public function getUserIdByPhone($mobile = '')
     {
-        return $this->client->get('user/get_by_mobile', compact('phone'));
+        return $this->client->get('user/get_by_mobile', compact('mobile'));
     }
 
     /**

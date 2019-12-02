@@ -48,3 +48,9 @@ $app = new Application($config);
 ## License
 
 MIT
+
+## 支持作者
+
+开源不易，如果你觉得 EasyDingTalk 节省了你的时间，方便了你的开发，不妨赞赏支持一下
+
+<img width="280" height="280" src="https://user-images.githubusercontent.com/6228858/69937515-f957d180-1515-11ea-91bb-2b99684e8898.JPG">

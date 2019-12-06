@@ -23,30 +23,33 @@ class Robot
      * @var string
      */
     protected $accessToken;
-    /**
-     * 加签 没有勾选，不用填写
-     * @var string
-     */
-    private $secret;
 
     /**
-     * @param string $accessToken
-     * @param string $secret
+     * 加签 没有勾选，不用填写
+     *
+     * @var string
      */
-    public function __construct($accessToken,$secret='')
+    protected $secret;
+
+    /**
+     * @param string      $accessToken
+     * @param string|null $secret
+     */
+    public function __construct($accessToken, $secret = null)
     {
         $this->accessToken = $accessToken;
         $this->secret = $secret;
     }
 
     /**
-     * @param string $accessToken
-     * @param string $secret
+     * @param string      $accessToken
+     * @param string|null $secret
+     *
      * @return self
      */
-    public static function create($accessToken,$secret='')
+    public static function create($accessToken, $secret = null)
     {
-        return new static($accessToken,$secret);
+        return new static($accessToken, $secret);
     }
 
     /**
@@ -60,13 +63,16 @@ class Robot
      */
     public function send($message)
     {
-        $url='https://oapi.dingtalk.com/robot/send?access_token='.$this->accessToken;
-        if (!empty($this->secret)) {
-            $timestamp = time() . '000';
-            $signature = base64_encode(hash_hmac('sha256', $timestamp . "\n" . $this->secret, $this->secret, true));
-            $sign      = urlencode($signature);
-            $url       .= sprintf('&sign=%s&timestamp=%s',$sign, $timestamp);
+        $url = 'https://oapi.dingtalk.com/robot/send?access_token='.$this->accessToken;
+
+        if ($this->secret) {
+            $timestamp = time().'000';
+            $url .= sprintf(
+                '&sign=%s&timestamp=%s',
+                urlencode(base64_encode(hash_hmac('sha256', $timestamp."\n".$this->secret, $this->secret, true))), $timestamp
+            );
         }
+
         $response = $this->getHttpClient()->request(
             'POST', $url, ['json' => $message]
         );

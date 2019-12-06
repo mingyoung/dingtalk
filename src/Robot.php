@@ -25,21 +25,31 @@ class Robot
     protected $accessToken;
 
     /**
-     * @param string $accessToken
+     * 加签 没有勾选，不用填写
+     *
+     * @var string
      */
-    public function __construct($accessToken)
+    protected $secret;
+
+    /**
+     * @param string      $accessToken
+     * @param string|null $secret
+     */
+    public function __construct($accessToken, $secret = null)
     {
         $this->accessToken = $accessToken;
+        $this->secret = $secret;
     }
 
     /**
-     * @param string $accessToken
+     * @param string      $accessToken
+     * @param string|null $secret
      *
      * @return self
      */
-    public static function create($accessToken)
+    public static function create($accessToken, $secret = null)
     {
-        return new static($accessToken);
+        return new static($accessToken, $secret);
     }
 
     /**
@@ -53,8 +63,18 @@ class Robot
      */
     public function send($message)
     {
+        $url = 'https://oapi.dingtalk.com/robot/send?access_token='.$this->accessToken;
+
+        if ($this->secret) {
+            $timestamp = time().'000';
+            $url .= sprintf(
+                '&sign=%s&timestamp=%s',
+                urlencode(base64_encode(hash_hmac('sha256', $timestamp."\n".$this->secret, $this->secret, true))), $timestamp
+            );
+        }
+
         $response = $this->getHttpClient()->request(
-            'POST', 'https://oapi.dingtalk.com/robot/send?access_token='.$this->accessToken, ['json' => $message]
+            'POST', $url, ['json' => $message]
         );
 
         return $this->castResponseToType($response);

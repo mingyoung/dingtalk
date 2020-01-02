@@ -1,6 +1,6 @@
 {
     "name": "mingyoung/dingtalk",
-    "description": "钉钉 SDK",
+    "description": "EasyDingTalk, Alibaba Dingtalk SDK for PHP",
     "keywords": [
         "dingtalk",
         "dingding",

@@ -21,6 +21,7 @@ use Pimple\Container;
  * @property \EasyDingTalk\Role\Client $role
  * @property \EasyDingTalk\User\Client $user
  * @property \EasyDingTalk\Media\Client $media
+ * @property \EasyDingTalk\H5app\Client $h5app
  * @property \EasyDingTalk\Health\Client $health
  * @property \EasyDingTalk\Report\Client $report
  * @property \EasyDingTalk\Checkin\Client $checkin

@@ -102,14 +102,14 @@ class OAuthClient extends Client
      *
      * @throws \EasyDingTalk\Auth\InvalidStateException
      */
-    public function user()
+    public function user($state, $code)
     {
         if (!$this->hasValidState($this->app['request']->get('state'))) {
             throw new InvalidStateException();
         }
 
         $data = [
-            'tmp_auth_code' => $this->app['request']->get('code'),
+            'tmp_auth_code' => $code,
         ];
 
         $query = [

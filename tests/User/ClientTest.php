@@ -138,14 +138,14 @@ class ClientTest extends TestCase
     /** @test */
     public function getUserIdByPhone()
     {
-        $this->make(Client::class)->getUserIdByPhone()
-            ->assertUri('user/get_by_mobile')->assertQuery(['phone' => '18888888888']);
+        $this->make(Client::class)->getUserIdByPhone('18888888888')
+            ->assertUri('user/get_by_mobile')->assertQuery(['mobile' => '18888888888']);
     }
 
     /** @test */
     public function getInactiveUsers()
     {
-        $this->make(Client::class)->getInactiveUsers()
-            ->assertUri('topapi/inactive/user/get')->assertQuery(['query_date' => '20190808', 'offset' => 0, 'size' => 100]);
+        $this->make(Client::class)->getInactiveUsers('20190808',0,100)
+            ->assertUri('topapi/inactive/user/get')->assertPostJson(['query_date' => '20190808', 'offset' => 0, 'size' => 100]);
     }
 }

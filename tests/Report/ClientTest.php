@@ -59,7 +59,7 @@ class ClientTest extends TestCase
     /** @test */
     public function statisticsByType()
     {
-        $this->make(Client::class)->unreadCount('xxxxxxx')
+        $this->make(Client::class)->statisticsByType('xxxxxxx',0)
             ->assertUri('topapi/report/statistics/listbytype')->assertPostJson([
                 'report_id' => 'xxxxxxx', 'type' => 0, 'offset' => 0, 'size' => 100,
             ]);
@@ -79,7 +79,7 @@ class ClientTest extends TestCase
     {
         $this->make(Client::class)->getComments('mingyoung')
             ->assertUri('topapi/report/comment/list')->assertPostJson([
-                'report_id' => 'xxxxxxx', 'offset' => 0, 'size' => 100,
+                'report_id' => 'mingyoung', 'offset' => 0, 'size' => 100,
             ]);
     }
 }

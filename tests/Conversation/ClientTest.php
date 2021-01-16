@@ -32,7 +32,7 @@ class ClientTest extends TestCase
     {
         $this->make(Client::class)->sendCorporationMessage($params = ['foo' => 'bar'])
             ->assertPostUri('topapi/message/corpconversation/asyncsend_v2')
-            ->assertPostFormParams($params);
+            ->assertPostJson($params);
     }
 
     /** @test */

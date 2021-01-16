@@ -38,6 +38,7 @@ class ApplicationTest extends TestCase
             'calendar' => \EasyDingTalk\Calendar\Client::class,
             'schedule' => \EasyDingTalk\Schedule\Client::class,
             'microapp' => \EasyDingTalk\Microapp\Client::class,
+            'h5app' => \EasyDingTalk\H5app\Client::class,
             'client' => \EasyDingTalk\Kernel\Http\Client::class,
             'config' => \Overtrue\Http\Support\Collection::class,
             'blackboard' => \EasyDingTalk\Blackboard\Client::class,
